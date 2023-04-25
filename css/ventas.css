@@ -52,38 +52,11 @@ nav ul a:hover{
     color: #2a549b;
 }
 
-.portada{
-    height: 680px;
-    background-color: #1d396b;
-    object-fit: cover;
-}
-
 .contenedor{
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.bienvenida{
-    font-size: 70px;
-    color: #1d396b;
-}
-
-.recomendacion{
-    width: 50%;
-    border-radius: 10px;
-    border: 2px solid #1d396b;
-    padding: 18px;
-}
-
-.recomendacion h2{
-    color: #1d396b;
-    font-size: 25px;
-}
-
-.recomendacion p{
-    font-size: 18px;
 }
 
 footer{

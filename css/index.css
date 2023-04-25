@@ -1,0 +1,100 @@
+html{
+    font-family: 'Roboto Condensed', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #e9e9e9;
+    display: flex;
+    flex-direction: column;
+}
+
+nav{
+    height: 120px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav img{
+    height: 90%;
+    margin-left: 40px;
+}
+
+nav ul{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+    margin: 0;
+}
+
+nav ul a{
+    text-decoration: none;
+    color: #1d396b;
+    font-weight: 700;
+    font-size: 24px;
+    margin-right: 40px;
+}
+
+nav ul a:hover{
+    color: #2a549b;
+}
+
+.portada{
+    height: 680px;
+    background-color: #1d396b;
+    object-fit: cover;
+}
+
+.contenedor{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bienvenida{
+    font-size: 70px;
+    color: #1d396b;
+}
+
+.recomendacion{
+    width: 50%;
+    border-radius: 10px;
+    border: 2px solid #1d396b;
+    padding: 18px;
+}
+
+.recomendacion h2{
+    color: #1d396b;
+    font-size: 25px;
+}
+
+.recomendacion p{
+    font-size: 18px;
+}
+
+footer{
+    height: 40px;
+    background-color: #1d396b;
+    margin-top: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+footer p{
+    margin: 0;
+    padding: 0;
+    color: white;    
+    font-size: 18px;
+}

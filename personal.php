@@ -26,25 +26,33 @@ include 'bdd.php';
             <li><a href="#">SALIR</a></li>
         </ul>
     </nav>
-    <div class="contenedor-tabla">
-        <div class="tabla-titulo">VENTAS</div>
-        <div class="tabla-tv">CANTIDAD VENDIDA</div>
-        <div class="tabla-tv">FECHA DE VENTA</div>
-        <div class="tabla-tv">PRODUCTO</div>
-        <div class="tabla-tv">SUCURSAL</div>
-        
+    <table>
+    <thead>
+        <tr>
+            <th>NOMBRE</th>
+            <th>ROL</th>
+            <th>HORARIO</th>
+            <th>RENDIMIENTO</th>
+            <th>SUCURSAL</th>
+        </tr>
+    </thead>
+    <tbody>
         <?php 
-        $ventas = mysqli_query($conexion, "SELECT a.cantidad_vendida, a.fecha_venta, b.nombre_cliente, c.nombre 
-        FROM ventas a, productos b, sucursales c 
-        WHERE a.Productos_id_producto = b.id_producto
-        AND a.Sucursales_id_sucursal = c.id_sucursal");
-        while($row=mysqli_fetch_assoc($ventas)){?>
-        <div class="tabla-itemv"><?php echo $row["cantidad_vendida"];?></div>
-        <div class="tabla-itemv"><?php echo $row["fecha_venta"];?></div>
-        <div class="tabla-itemv"><?php echo $row["nombre_cliente"];?></div>
-        <div class="tabla-itemv"><?php echo $row["nombre"];?></div>
-        <?php } mysqli_free_result($ventas); ?>
-    </div>
+        $empleados = mysqli_query($conexion, "SELECT a.nombre, a.direccion, a.horario, a.telefono, c.nombre 
+        FROM empleados a, sucursales c 
+        WHERE a.sucursales_id_sucursal = c.id_sucursal");
+        while($row=mysqli_fetch_assoc($empleados)){?>
+        <tr>
+            <td><?php echo $row["nombre"];?></td>
+            <td><?php echo $row["direccion"];?></td>
+            <td><?php echo $row["horario"];?></td>
+            <td><?php echo $row["telefono"];?></td>
+            <td><?php echo $row["nombre"];?></td>
+        </tr>
+        <?php } mysqli_free_result($empleados); ?>
+    </tbody>
+</table>
+
     <footer>
         <p>2023 por: Universidad Católica Boliviana "San Pablo"</p>
     </footer>

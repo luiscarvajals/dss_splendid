@@ -9,7 +9,7 @@ $conexion = new mysqli($server, $username, $password, $database);
 if($conexion -> connect_errno) {
   die("Conexio fallida". $conexion -> connect_errno );
 }else{
-  echo "Conectado";
+  echo "";
 }
 
 

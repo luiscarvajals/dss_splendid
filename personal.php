@@ -9,7 +9,7 @@ include 'bdd.php';
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Ventas</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' href='css/ventas.css'>
+    <link rel='stylesheet' href='css/personal.css'>
     <script src='js/index.js'></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

@@ -17,7 +17,7 @@
         <ul>
             <li><a href="index.php">INICIO</a></li>
             <li><a href="ventas.php">VENTAS</a></li>
-            <li><a href="#">PERSONAL</a></li>
+            <li><a href="empleados.php">PERSONAL</a></li>
             <li><a href="#">INVENTARIO</a></li>
             <li><a href="#">SALIR</a></li>
         </ul>

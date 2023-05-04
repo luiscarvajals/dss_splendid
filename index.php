@@ -18,7 +18,7 @@
             <li><a href="index.php">INICIO</a></li>
             <li><a href="ventas.php">VENTAS</a></li>
             <li><a href="personal.php">PERSONAL</a></li>
-            <li><a href="#">INVENTARIO</a></li>
+            <li><a href="inventario.php">INVENTARIO</a></li>
             <li><a href="#">SALIR</a></li>
         </ul>
     </nav>

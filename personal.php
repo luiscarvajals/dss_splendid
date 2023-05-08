@@ -38,16 +38,15 @@ include 'bdd.php';
     </thead>
     <tbody>
         <?php 
-        $empleados = mysqli_query($conexion, "SELECT a.nombre, a.direccion, a.horario, a.telefono, c.nombre 
-        FROM empleados a, sucursales c 
-        WHERE a.sucursales_id_sucursal = c.id_sucursal");
+        $empleados = mysqli_query($conexion, "SELECT a.nombre, a.direccion, CONCAT(b.hora_entrada, ' - ', b.hora_salida) AS horario, a.telefono
+        FROM empleados a, horarios b
+        WHERE a.id = b.id_empleado");
         while($row=mysqli_fetch_assoc($empleados)){?>
         <tr>
             <td><?php echo $row["nombre"];?></td>
             <td><?php echo $row["direccion"];?></td>
             <td><?php echo $row["horario"];?></td>
             <td><?php echo $row["telefono"];?></td>
-            <td><?php echo $row["nombre"];?></td>
         </tr>
         <?php } mysqli_free_result($empleados); ?>
     </tbody>

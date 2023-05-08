@@ -86,6 +86,111 @@ nav ul a:hover{
     font-size: 18px;
 }
 
+.contenedor-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contenedor-historia{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 30px;
+}
+
+.contenedor-historia .imghist{
+    height: 400px;
+    width: 500px;
+    padding-top: 60px;
+    padding-right: 20px;
+    padding-left: 50px;
+}
+
+.cont-texth{
+    font-size: 25px;
+    margin: 10px;
+    text-align: justify;
+    display: block;
+    border-radius: 10px;
+    border: 2px solid #1d396b;
+    padding: 15px;
+}
+
+.cont-texth h2{
+    font-size: 40px;
+    text-align: center;
+    font-weight: bold;
+    color: #1d396b;
+
+}
+
+
+.contenedor-mvv{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 20px;
+    padding-bottom: 90px;
+}
+
+.mvv-info{
+    align-items: center;
+    justify-content: center;
+    padding: 60px;
+}
+
+.mvv-info h2{
+    font-size: 40px;
+    text-align: center;
+    font-weight: bold;
+    color: #3f5d92;
+}
+
+.mvv-info p{
+    font-size: 25px;
+    text-align: justify;
+}
+
+.mvv-info .img{
+    width: 50%;
+    padding-left: 200px;
+}
+
+.valores-info{
+    display: block;
+}
+
+.valores-info .img{
+    width: 35%;
+    padding-left: 400px;
+    padding-bottom: 20px;
+}
+
+.valores-info h2{
+    font-size: 40px;
+    text-align: center;
+    font-weight: bold;
+    color: #3f5d92;
+}
+
+.cont-textmvv h1{
+    text-align: justify;
+    font-weight: bold;
+}
+
+.grupo {
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    flex-direction: row;
+  }
+
+.grupo h1, .grupo p{
+    margin: 1.5px;
+    font-size: 25px;
+  }
+
+
 footer{
     height: 40px;
     background-color: #1d396b;

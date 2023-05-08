@@ -26,27 +26,133 @@ include 'bdd.php';
             <li><a href="#">SALIR</a></li>
         </ul>
     </nav>
-    <div class="contenedor-tabla">
-        <div class="tabla-titulo">VENTAS</div>
-        <div class="tabla-tv">CANTIDAD VENDIDA</div>
-        <div class="tabla-tv">FECHA DE VENTA</div>
-        <div class="tabla-tv">PRODUCTO</div>
-        <div class="tabla-tv">SUCURSAL</div>
-        
-        <?php 
-        $ventas = mysqli_query($conexion, "SELECT a.cantidad_vendida, a.fecha_venta, b.nombre_cliente, c.nombre 
-        FROM ventas a, productos b, sucursales c 
-        WHERE a.Productos_id_producto = b.id_producto
-        AND a.Sucursales_id_sucursal = c.id_sucursal");
-        while($row=mysqli_fetch_assoc($ventas)){?>
-        <div class="tabla-itemv"><?php echo $row["cantidad_vendida"];?></div>
-        <div class="tabla-itemv"><?php echo $row["fecha_venta"];?></div>
-        <div class="tabla-itemv"><?php echo $row["nombre_cliente"];?></div>
-        <div class="tabla-itemv"><?php echo $row["nombre"];?></div>
-        <?php } mysqli_free_result($ventas); ?>
+
+    <div class="opcion-dropdown">
+    <select onchange="cambiarTabla(this.value)">
+            <option  value="">Seleccionar opción</option>
+            <option  value="ventas_totales">Ventas totales</option>
+            <option  value="ventas_sucursal1">Ventas por sucursal 1</option>
+            <option  value="ventas_sucursal2">Ventas por sucursal 2</option>
+            <option  value="helados_mas_vendidos">Helados más vendidos</option>
+    </select>
     </div>
+
+    <div class="contenedor-datos"></div>
+
     <footer>
         <p>2023 por: Universidad Católica Boliviana "San Pablo"</p>
     </footer>
+
+    <script>
+        function cambiarTabla(opcion) {
+            var contenedorTabla = document.querySelector('.contenedor-datos');
+
+            // Limpiar contenido actual de la tabla
+            contenedorTabla.innerHTML = '';
+
+            // Verificar la opción seleccionada y agregar el contenido correspondiente a la tabla
+            switch (opcion) {
+                case 'ventas_totales':
+                    contenedorTabla.innerHTML = `
+                    <div class="contenedor-tabla1">
+                        <div class="tabla-titulo1">VENTAS</div>
+                        <div class="tabla-tv">FECHA DE VENTA</div>
+                        <div class="tabla-tv">CANTIDAD</div>
+                        <div class="tabla-tv">PRODUCTO</div>
+                        <div class="tabla-tv">SUCURSAL</div>
+                        <div class="tabla-tv">TOTAL</div>
+                        
+                        <?php 
+                        $ventas = mysqli_query($conexion, "select a.fecha_venta, a.cantidad, b.nombre AS nombre_producto, c.nombre AS nombre_sucursal, a.total 
+                        from ventas a, productos b, sucursales c 
+                        where c.id = a.id_sucursal 
+                        and b.id = a.id_producto");
+                        
+                        while($row =mysqli_fetch_assoc($ventas)){?>
+                            <div class="tabla-itemv"><?php echo $row["fecha_venta"];?></div>
+                            <div class="tabla-itemv"><?php echo $row["cantidad"];?></div>
+                            <div class="tabla-itemv"><?php echo $row["nombre_producto"];?></div>
+                            <div class="tabla-itemv"><?php echo $row["nombre_sucursal"];?></div>
+                            <div class="tabla-itemv"><?php echo $row["total"];?></div>
+                            <?php } mysqli_free_result($ventas); ?>
+                    </div>
+                        `;
+                        break;
+                    
+                    case 'ventas_sucursal1':
+                        contenedorTabla.innerHTML = `
+                        <div class="contenedor-tabla2">
+                            <div class="tabla-titulo2">VENTAS</div>
+                            <div class="tabla-tv">FECHA DE VENTA</div>
+                            <div class="tabla-tv">CANTIDAD</div>
+                            <div class="tabla-tv">PRODUCTO</div>
+                            <div class="tabla-tv">TOTAL</div>
+                            
+                            <?php 
+                            $ventas = mysqli_query($conexion, "SELECT a.fecha_venta, a.cantidad, b.nombre, a.total 
+                                FROM ventas a 
+                                JOIN productos b ON b.id = a.id_producto 
+                                JOIN sucursales c ON c.id = a.id_sucursal 
+                                WHERE c.nombre = 'Sucursal 1'");
+                            
+                            while($row=mysqli_fetch_assoc($ventas)){?>
+                            <div class="tabla-itemv"><?php echo $row["fecha_venta"];?></div>
+                            <div class="tabla-itemv"><?php echo $row["cantidad"];?></div>
+                            <div class="tabla-itemv"><?php echo $row["nombre"];?></div>
+                            <div class="tabla-itemv"><?php echo $row["total"];?></div>
+                            <?php } mysqli_free_result($ventas); ?>
+                        </div>
+                            `;
+                        break;
+                    
+                    case 'ventas_sucursal2':
+                        contenedorTabla.innerHTML = `
+                        <div class="contenedor-tabla2">
+                            <div class="tabla-titulo2">VENTAS</div>
+                            <div class="tabla-tv">FECHA DE VENTA</div>
+                            <div class="tabla-tv">CANTIDAD</div>
+                            <div class="tabla-tv">PRODUCTO</div>
+                            <div class="tabla-tv">TOTAL</div>
+                            
+                            <?php 
+                            $ventas = mysqli_query($conexion, "SELECT a.fecha_venta, a.cantidad, b.nombre, a.total 
+                                FROM ventas a 
+                                JOIN productos b ON b.id = a.id_producto 
+                                JOIN sucursales c ON c.id = a.id_sucursal 
+                                WHERE c.nombre = 'Sucursal 2'");
+                            
+                            while($row=mysqli_fetch_assoc($ventas)){?>
+                            <div class="tabla-itemv"><?php echo $row["fecha_venta"];?></div>
+                            <div class="tabla-itemv"><?php echo $row["cantidad"];?></div>
+                            <div class="tabla-itemv"><?php echo $row["nombre"];?></div>
+                            <div class="tabla-itemv"><?php echo $row["total"];?></div>
+                            <?php } mysqli_free_result($ventas); ?>
+                        </div>
+                        `;
+                        break;
+
+                    case 'helados_mas_vendidos':
+                        contenedorTabla.innerHTML = `
+                    <div class="contenedor-tabla3">
+                        <div class="tabla-titulo3">VENTAS</div>
+                        <div class="tabla-tv">PRODUCTO</div>
+                        <div class="tabla-tv">TOTAL</div>
+                        
+                        <?php 
+                        $ventas = mysqli_query($conexion, "SELECT a.nombre, SUM(b.cantidad) AS total_vendido
+                        FROM ventas b JOIN productos a ON a.id = b.id_producto JOIN sucursales c ON c.id = b.id_sucursal
+                        WHERE c.nombre IN ('Sucursal 1', 'Sucursal 2') GROUP BY a.nombre ORDER BY total_vendido DESC");
+                        
+                        while($row=mysqli_fetch_assoc($ventas)){?>
+                        <div class="tabla-itemv"><?php echo $row["nombre"];?></div>
+                        <div class="tabla-itemv"><?php echo $row["total_vendido"];?></div>
+                        <?php } mysqli_free_result($ventas); ?>
+                    </div>
+                        `;
+                        break;
+                }
+            }
+        </script>
+    </body>
 </body>
 </html>

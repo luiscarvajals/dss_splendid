@@ -34,7 +34,7 @@ include 'bdd.php';
         <div class="tabla-tv">SUCURSAL</div>
         
         <?php 
-        $ventas = mysqli_query($conexion, "SELECT a.cantidad_vendida, a.fecha_venta, b.nombre_cliente, c.nombre 
+        $ventas = mysqli_query($conexion, "SELECT a.cantidad_vendida, a.fecha_venta, b.nombre_cliente, c.nombre
         FROM ventas a, productos b, sucursales c 
         WHERE a.Productos_id_producto = b.id_producto
         AND a.Sucursales_id_sucursal = c.id_sucursal");

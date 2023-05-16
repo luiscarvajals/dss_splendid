@@ -1,37 +1,111 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Inicio</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='css/index.css'>
-    <script src='js/index.js'></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
+	<meta charset="UTF-8">
+	<title>Iniciar Sesión</title>
+	<script src="jquery-3.5.0.min.js"></script>	
+	<style type="text/css">
+		body{
+			background-image: src('images/cover.jpg');
+            background-size: cover;
+		}
+		
+		div.iniciosesion{
+			background-color: #a1a1a1d4;
+            border-radius: 20px;
+			width: 300px;
+			height: 350px;
+			margin-top: 170px;
+			padding-top: 60px;
+		}
+
+		h1{
+			color: #000000;
+		}
+
+		#usuario{
+			background-color: #eee0ff;
+			width: 200px;
+			height: 30px;
+			margin-top: 20px;
+		}
+
+		#password{
+			background-color: #eee0ff;
+			width: 200px;
+			height: 30px;			
+			margin-top: 20px;
+		}
+
+		#btnEnviar{
+			background-color: #000000; 
+			width: 150px;
+			height: 30px;
+			margin-top: 40px;
+			color: white;
+			border-radius: 20px;					
+		}
+	</style>
 </head>
 <body>
-    <nav>
-        <a href="index.php"><img src="images/logo.jpeg" alt="logo"></a>
-        <ul>
-            <li><a href="index.php">INICIO</a></li>
-            <li><a href="ventas.php">VENTAS</a></li>
-            <li><a href="personal.php">PERSONAL</a></li>
-            <li><a href="#">INVENTARIO</a></li>
-            <li><a href="#">SALIR</a></li>
-        </ul>
-    </nav>
-    <img class="portada" src="images/cover.jpg" alt="hero">
-    <div class="contenedor">
-        <h1 class="bienvenida">BIENVENIDO DE VUELTA</h1>
-        <div class="recomendacion">
-            <h2>Esta es la recomendacion para el dia de hoy:</h2>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates iusto temporibus omnis est consequuntur enim ad dolore nam, hic reiciendis sed consequatur, inventore quaerat. Debitis eos consectetur culpa temporibus libero. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt esse totam ut, corrupti, eos rerum cumque necessitatibus veniam eum ducimus vel quam rem nobis, iste facere temporibus doloribus? Culpa, tempore.</p>
-        </div>
-    </div>
-    <footer>
-        <p>2023 por: Universidad Católica Boliviana "San Pablo"</p>
-    </footer>
+	<center>
+		<div class="iniciosesion">
+			<form method="POST">
+				<h1>Iniciar Sesión</h1>
+				<input type="text" name="usuario" id="usuario" placeholder="Nombre de usuario"><br>
+				<input type="password" name="password" id="password" placeholder="Contraseña"><br>
+				<input id="btnEnviar" name="btnEnviar" type="submit" value="Entrar"/>
+			</form>		
+		</div>		
+	</center>
 </body>
 </html>
+
+<?php
+	// Conexión con la base de datos
+	if(isset($_POST['btnEnviar'])) {
+		$conexion = mysqli_connect('localhost', 'root', '', 'tienda_helados');
+
+		$usuario = $_POST['usuario'];
+		$password = $_POST['password'];	
+
+		// SELECT 
+
+		$sql = "SELECT * FROM usuario";
+		$result = mysqli_query($conexion, $sql);
+
+		$usuario_registrado = false;
+		$password_correcta = false;
+
+		while($mostrar = mysqli_fetch_array($result)){
+			if($usuario == $mostrar['usuario']){
+				$usuario_registrado = true;
+				if($password == $mostrar['password']){
+					$password_correcta = true;
+				} else {
+					$password_correcta = false;
+				}
+			}
+		}
+
+		if($password_correcta){
+			header('Location: inicio.php');
+		}
+
+		if($usuario_registrado && !$password_correcta){
+			?>
+			<script>
+				alert("Contraseña incorrecta");
+			</script>
+			<?php
+		}
+
+		if(!$usuario_registrado && !$password_correcta){ 
+			?>
+			<script>
+				alert("Usuario no registrado");
+			</script>
+			<?php
+		}
+	}
+?>

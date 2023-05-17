@@ -55,7 +55,7 @@ nav ul a:hover{
 .opcion-dropdown{
 	max-width: 250px;
 	position: relative;
-    top: 20px;
+    top: 40px;
     left: 1500px;
 }
 
@@ -184,19 +184,27 @@ nav ul a:hover{
     font-size: 1.5em;
 }
 
-footer{
-    height: 40px;
-    background-color: #1d396b;
-    margin-top: 60px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
 
-footer p{
-    margin: 0;
-    padding: 0;
-    color: white;    
-    font-size: 18px;
+.btVolver{
+  padding-top: 50px;
+  padding-left: 50px;
 }
+.btVolver .boton-av{
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  height: 38px;
+  line-height: 38px;
+  width: 100px;
+  border-radius: 19px;
+  font-family: 'Montserrat', sans-serif;
+  
+  }
+  
+.btVolver .boton-av {
+  background: #fff;
+  transition: 0.2s all ease-in-out;
+  }
+  
+.btVolver .boton-av {
+  background: #171A2B;
+  color: white;
+  }

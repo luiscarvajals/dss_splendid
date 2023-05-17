@@ -79,7 +79,41 @@
     </div>
     
     <footer>
-        <p>2023 por: Universidad Católica Boliviana "San Pablo"</p>
+        <div class="footer-contenedor">
+            <div class="footer-info">
+                <div class="footer-contact">
+                    <div class="infoimg">
+                    <img src="images/whatsapp.png" alt="hero">
+                    <p>TELEFONO: </p>
+                    </div>
+
+                    <p class="p1">271825944 </p>
+                </div>
+
+                <div class="footer-contact">
+                    <div class="infoimg">
+                    <img src="images/sucursal.png" alt="hero">
+                    <p>SUCURSALES: </p>
+                    </div>
+
+                    <p class="p1">Zona San Pedro Calle, Nicolás Acosta N°420</p>
+                    <p class="p1">Zona Sur, Calle 15 de Calacoto</p>
+                </div>
+
+                <div class="footer-contact">
+                    <div class="infoimg">
+                    <img src="images/facebook.png" alt="hero">
+                    <p >FACEBOOK: </p>
+                    </div>
+
+                    <p class="p1">Helados Splendid La Paz Bolivia </p>
+                </div>
+            </div>
+            <div class="info">
+                <p>2023 por: Universidad Católica Boliviana "San Pablo"</p>
+            </div>
+            
+        </div>
     </footer>
 </body>
 </html>

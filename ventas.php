@@ -21,8 +21,8 @@ include 'bdd.php';
         <ul>
             <li><a href="index.php">INICIO</a></li>
             <li><a href="ventas.php">VENTAS</a></li>
-            <li><a href="#">PERSONAL</a></li>
-            <li><a href="#">INVENTARIO</a></li>
+            <li><a href="personal.php">PERSONAL</a></li>
+            <li><a href="inventario.php">INVENTARIO</a></li>
             <li><a href="#">SALIR</a></li>
         </ul>
     </nav>
@@ -39,9 +39,10 @@ include 'bdd.php';
 
     <div class="contenedor-datos"></div>
 
-    <footer>
-        <p>2023 por: Universidad Católica Boliviana "San Pablo"</p>
-    </footer>
+    <a href="añadirVenta.php" class="btVolver">
+            <button class="boton-av" type="submit">
+                Añadir Venta
+            </button></a>
 
     <script>
         function cambiarTabla(opcion) {
@@ -153,6 +154,7 @@ include 'bdd.php';
                 }
             }
         </script>
-    </body>
+
+<footer>    </footer>
 </body>
 </html>

@@ -60,10 +60,8 @@ $conn->close();
 <body>
     <div class="container">
         <header>
-            <h1>Personal de la Tienda de Helados</h1>
+            Personal de la Tienda de Helados
         </header>
-
-        <br><br>
         <div class="container">
             <div class="row">
                 <?php foreach ($empleados as $empleado): ?>
@@ -72,31 +70,17 @@ $conn->close();
                             <img src="<?php echo $empleado['imagen']; ?>" alt="Foto de <?php echo $empleado['nombre']; ?>">
                             <div class="info">
                                 <h3>
-                                    <?php echo "Nombre completo: " . $empleado['nombre'] . " " . $empleado['apellidoP'] . " " . $empleado['apellidoM']; ?>
+                                    <?php echo $empleado['nombre']; ?>
                                 </h3>
                                 <p>
-                                    <?php echo "Email:"." ".$empleado['email']; ?>
-                                </p>
-                                <p>
-                                    <?php echo "Puesto:"." ". $empleado['puesto']; ?>
-                                </p>
-                                <p>
-                                    <?php echo "Direccion:"." ". $empleado['direccion']; ?>
+                                    <?php echo $empleado['puesto']; ?>
                                 </p>
                             </div>
                         </div>
                     </div>
-                    <br><br>
                 <?php endforeach; ?>
-                
             </div>
         </div>
-        <br><br>
-        <a href="agregar_empleado.php" class="btn btn-primary">Agregar Empleado</a>
-        <a href="eliminar_empleado.php" class="btn btn-primary">Eliminar Empleado</a>
-        <a href="modificar_empleado.php" class="btn btn-primary">Modificar Empleado</a>
-        <br>
-
         <footer>
             <p>2023 por: Universidad Católica Boliviana "San Pablo"</p>
         </footer>

@@ -15,9 +15,10 @@
     <nav>
         <a href="index.php"><img src="images/logo.jpeg" alt="logo"></a>
         <ul>
-            <li><a href="index.php">INICIO</a></li>
+            <li><a href="inicio.php">INICIO</a></li>
             <li><a href="ventas.php">VENTAS</a></li>
             <li><a href="personal.php">PERSONAL</a></li>
+            <li><a href="dashboard.php">DASHBOARD</a></li>
             <li><a href="#">INVENTARIO</a></li>
             <li><a href="#">SALIR</a></li>
         </ul>

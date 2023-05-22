@@ -11,10 +11,6 @@ include 'bdd.php';
     <title>Ventas</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' href='css/añadirventas.css'>
-<<<<<<< HEAD
-=======
-    <link rel='stylesheet' type='text/css' media='screen' href='css/index.css'>
->>>>>>> f6b77882942a708c014b0d7e4d51f5be3e80a563
     <script src='js/index.js'></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,16 +22,10 @@ include 'bdd.php';
     <nav>
         <a href="index.php"><img src="images/logo.jpeg" alt="logo"></a>
         <ul>
-<<<<<<< HEAD
             <li><a href="inicio.php">INICIO</a></li>
             <li><a href="ventas.php">VENTAS</a></li>
             <li><a href="personal.php">PERSONAL</a></li>
             <li><a href="dashboard.php">DASHBOARD</a></li>
-=======
-            <li><a href="index.php">INICIO</a></li>
-            <li><a href="ventas.php">VENTAS</a></li>
-            <li><a href="personal.php">PERSONAL</a></li>
->>>>>>> f6b77882942a708c014b0d7e4d51f5be3e80a563
             <li><a href="inventario.php">INVENTARIO</a></li>
             <li><a href="#">SALIR</a></li>
         </ul>
@@ -69,24 +59,16 @@ include 'bdd.php';
             // Verificar si se encontraron registros
             if (mysqli_num_rows($result) > 0) {
                 // Crear el botón desplegable y su lista de opciones
-<<<<<<< HEAD
                 echo '<select name="producto" id="mySelect" onchange="calcularPrecio()" required>';
                 
-=======
-                echo '<select name="producto" id="mySelect" onchange="guardarValorSeleccionado()" required>';
->>>>>>> f6b77882942a708c014b0d7e4d51f5be3e80a563
                 echo '<option value="">Seleccionar opción</option>';
 
                 // Iterar sobre los registros y generar las opciones
                 while ($fila = mysqli_fetch_assoc($result)) {
                     $id = $fila['id'];
                     $nombre = $fila['nombre'];
-<<<<<<< HEAD
                     $precio = $fila['precio'];
                     echo '<option value="'. $id .'" data-precio="'. $precio .'">'.$nombre.'</option>';
-=======
-                    echo '<option value="'. $id .'">'.$nombre.'</option>';
->>>>>>> f6b77882942a708c014b0d7e4d51f5be3e80a563
                 }
 
                 // Cerrar el botón desplegable y su lista de opciones
@@ -108,33 +90,19 @@ include 'bdd.php';
         </div>
         <div class="cont-cantidad">
             <label for="Cantidad" class="form-label">CANTIDAD: </label>
-<<<<<<< HEAD
             <input id="cant" type="number" class="form_input" name="Cantidad" placeholder="Cantidad" onchange="calcularPrecio()" required>
         </div>
         <div class="cont-total">
             <label for="Total" class="form-label">TOTAL:</label>
             <input id="prec" type="text" class="form_input" name="Total" placeholder="Total [Bs]" readonly>
-=======
-            <input type="number" class="form_input" name="Cantidad" placeholder="Cantidad comprada" required>
-        </div>
-        <div class="cont-total">
-            <label for="Total" class="form-label">TOTAL:</label>
-            <input type="text" class="form_input" name="Total" placeholder="Total a pagar" required>
->>>>>>> f6b77882942a708c014b0d7e4d51f5be3e80a563
         </div>
         <div class="cont-sucursal">
         <label for="suc1" class="form-label">SUCURSAL:</label>
             <div class="radio-container">
                 <input id="suc1" name="sucursal" type="radio" value="1" checked required>
-<<<<<<< HEAD
                 <label for="suc1">SAN PEDRO</label>
                 <input id="suc2" name="sucursal" type="radio" value="2" required>
                 <label for="suc2">ZONA SUR</label>
-=======
-                <label for="suc1">Sucursal 1</label>
-                <input id="suc2" name="sucursal" type="radio" value="2" required>
-                <label for="suc2">Sucursal 2</label>
->>>>>>> f6b77882942a708c014b0d7e4d51f5be3e80a563
             </div>
         </div>
 
@@ -189,7 +157,6 @@ include 'bdd.php';
             
         </div>
     </footer>
-<<<<<<< HEAD
 
     <script>
         function calcularPrecio() {
@@ -216,8 +183,6 @@ include 'bdd.php';
 
 
     </script>
-=======
->>>>>>> f6b77882942a708c014b0d7e4d51f5be3e80a563
     
     
 

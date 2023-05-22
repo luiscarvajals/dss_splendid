@@ -4,11 +4,7 @@ include 'bdd.php';
 // Verificar si se recibieron los datos del formulario
 if(isset($_POST['Fecha']) && isset($_POST['Cantidad']) && isset($_POST['Total']) && isset($_POST['sucursal']) && isset($_POST['producto'])){
     $producto = $_POST["producto"];
-<<<<<<< HEAD
     $fecha = $_POST["Fecha"];
-=======
-    $fecha = date('Y-m-d', strtotime($_POST['Fecha']));
->>>>>>> f6b77882942a708c014b0d7e4d51f5be3e80a563
     $cantidad = $_POST["Cantidad"];
     $total = $_POST["Total"];
     $sucursal = $_POST["sucursal"];

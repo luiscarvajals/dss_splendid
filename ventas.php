@@ -22,10 +22,7 @@ include 'bdd.php';
             <li><a href="inicio.php">INICIO</a></li>
             <li><a href="ventas.php">VENTAS</a></li>
             <li><a href="personal.php">PERSONAL</a></li>
-<<<<<<< HEAD
             <li><a href="dashboard.php">DASHBOARD</a></li>
-=======
->>>>>>> f6b77882942a708c014b0d7e4d51f5be3e80a563
             <li><a href="inventario.php">INVENTARIO</a></li>
             <li><a href="#">SALIR</a></li>
         </ul>
@@ -34,7 +31,6 @@ include 'bdd.php';
     <div class="opcion-dropdown">
     <select onchange="cambiarTabla(this.value)">
             <option  value="">Seleccionar opción</option>
-<<<<<<< HEAD
             <option  value="ventas_totales">VENTAS TOTALES</option>
             <option  value="ventas_sucursalSP">VENTAS SUCURSAL SAN PEDRO</option>
             <option  value="ventas_sucursalZS">VENTAS SUCURSAL ZONA SUR</option>
@@ -44,23 +40,11 @@ include 'bdd.php';
     </select>
     </div>
 
-=======
-            <option  value="ventas_totales">Ventas totales</option>
-            <option  value="ventas_sucursal1">Ventas por sucursal 1</option>
-            <option  value="ventas_sucursal2">Ventas por sucursal 2</option>
-            <option  value="helados_mas_vendidos">Helados más vendidos</option>
-    </select>
-    </div>
-
-    <div class="contenedor-datos"></div>
-
->>>>>>> f6b77882942a708c014b0d7e4d51f5be3e80a563
     <a href="añadirVenta.php" class="btVolver">
             <button class="boton-av" type="submit">
                 Añadir Venta
             </button></a>
 
-<<<<<<< HEAD
     <div class="contenedor-datos">
     <div class="card" id="card-helados-vendidos">
 
@@ -103,19 +87,10 @@ include 'bdd.php';
             primerValorElement.textContent = '';
             segundoValorElement.textContent = '';
             tercerValorElement.textContent = '';
-=======
-    <script>
-        function cambiarTabla(opcion) {
-            var contenedorTabla = document.querySelector('.contenedor-datos');
-
-            // Limpiar contenido actual de la tabla
-            contenedorTabla.innerHTML = '';
->>>>>>> f6b77882942a708c014b0d7e4d51f5be3e80a563
 
             // Verificar la opción seleccionada y agregar el contenido correspondiente a la tabla
             switch (opcion) {
                 case 'ventas_totales':
-<<<<<<< HEAD
                     seleccionHeladosMasVendidos = false;
                     if (seleccionHeladosMasVendidos) {
                         contenedorCard.style.display = 'block';
@@ -125,20 +100,11 @@ include 'bdd.php';
                     contenedorTabla.innerHTML = `
                     <div class="contenedor-tabla1">
                         <div class="tabla-titulo1">VENTAS TOTALES (TODAS LAS SUCURSALES)</div>
-=======
-                    contenedorTabla.innerHTML = `
-                    <div class="contenedor-tabla1">
-                        <div class="tabla-titulo1">VENTAS</div>
->>>>>>> f6b77882942a708c014b0d7e4d51f5be3e80a563
                         <div class="tabla-tv">FECHA DE VENTA</div>
                         <div class="tabla-tv">CANTIDAD</div>
                         <div class="tabla-tv">PRODUCTO</div>
                         <div class="tabla-tv">SUCURSAL</div>
-<<<<<<< HEAD
                         <div class="tabla-tv">TOTAL [BS]</div>
-=======
-                        <div class="tabla-tv">TOTAL</div>
->>>>>>> f6b77882942a708c014b0d7e4d51f5be3e80a563
                         
                         <?php 
                         $ventas = mysqli_query($conexion, "select a.fecha_venta, a.cantidad, b.nombre AS nombre_producto, c.nombre AS nombre_sucursal, a.total 
@@ -157,7 +123,6 @@ include 'bdd.php';
                         `;
                         break;
                     
-<<<<<<< HEAD
                     case 'ventas_sucursalSP':
                         seleccionHeladosMasVendidos = false;
                         if (seleccionHeladosMasVendidos) {
@@ -172,27 +137,13 @@ include 'bdd.php';
                             <div class="tabla-tv">CANTIDAD</div>
                             <div class="tabla-tv">PRODUCTO</div>
                             <div class="tabla-tv">TOTAL [BS]</div>
-=======
-                    case 'ventas_sucursal1':
-                        contenedorTabla.innerHTML = `
-                        <div class="contenedor-tabla2">
-                            <div class="tabla-titulo2">VENTAS</div>
-                            <div class="tabla-tv">FECHA DE VENTA</div>
-                            <div class="tabla-tv">CANTIDAD</div>
-                            <div class="tabla-tv">PRODUCTO</div>
-                            <div class="tabla-tv">TOTAL</div>
->>>>>>> f6b77882942a708c014b0d7e4d51f5be3e80a563
                             
                             <?php 
                             $ventas = mysqli_query($conexion, "SELECT a.fecha_venta, a.cantidad, b.nombre, a.total 
                                 FROM ventas a 
                                 JOIN productos b ON b.id = a.id_producto 
                                 JOIN sucursales c ON c.id = a.id_sucursal 
-<<<<<<< HEAD
                                 WHERE c.nombre = 'San Pedro'");
-=======
-                                WHERE c.nombre = 'Sucursal 1'");
->>>>>>> f6b77882942a708c014b0d7e4d51f5be3e80a563
                             
                             while($row=mysqli_fetch_assoc($ventas)){?>
                             <div class="tabla-itemv"><?php echo $row["fecha_venta"];?></div>
@@ -204,7 +155,6 @@ include 'bdd.php';
                             `;
                         break;
                     
-<<<<<<< HEAD
                     case 'ventas_sucursalZS':
                         seleccionHeladosMasVendidos = false;
                         if (seleccionHeladosMasVendidos) {
@@ -219,27 +169,13 @@ include 'bdd.php';
                             <div class="tabla-tv">CANTIDAD</div>
                             <div class="tabla-tv">PRODUCTO</div>
                             <div class="tabla-tv">TOTAL [BS]</div>
-=======
-                    case 'ventas_sucursal2':
-                        contenedorTabla.innerHTML = `
-                        <div class="contenedor-tabla2">
-                            <div class="tabla-titulo2">VENTAS</div>
-                            <div class="tabla-tv">FECHA DE VENTA</div>
-                            <div class="tabla-tv">CANTIDAD</div>
-                            <div class="tabla-tv">PRODUCTO</div>
-                            <div class="tabla-tv">TOTAL</div>
->>>>>>> f6b77882942a708c014b0d7e4d51f5be3e80a563
                             
                             <?php 
                             $ventas = mysqli_query($conexion, "SELECT a.fecha_venta, a.cantidad, b.nombre, a.total 
                                 FROM ventas a 
                                 JOIN productos b ON b.id = a.id_producto 
                                 JOIN sucursales c ON c.id = a.id_sucursal 
-<<<<<<< HEAD
                                 WHERE c.nombre = 'Torre Ketal'");
-=======
-                                WHERE c.nombre = 'Sucursal 2'");
->>>>>>> f6b77882942a708c014b0d7e4d51f5be3e80a563
                             
                             while($row=mysqli_fetch_assoc($ventas)){?>
                             <div class="tabla-itemv"><?php echo $row["fecha_venta"];?></div>
@@ -252,7 +188,6 @@ include 'bdd.php';
                         break;
 
                     case 'helados_mas_vendidos':
-<<<<<<< HEAD
                         $primerValor = '';
                         $segundoValor = '';
                         $tercerValor = '';
@@ -292,26 +227,10 @@ include 'bdd.php';
                         ?>
                         <div class="tabla-itemv"><?php echo $row["nombre"];?></div>
                         <div class="tabla-itemv"><?php echo $row["cantidad_vendida"];?></div>
-=======
-                        contenedorTabla.innerHTML = `
-                    <div class="contenedor-tabla3">
-                        <div class="tabla-titulo3">VENTAS</div>
-                        <div class="tabla-tv">PRODUCTO</div>
-                        <div class="tabla-tv">TOTAL</div>
-                        
-                        <?php 
-                        $ventas = mysqli_query($conexion, "SELECT a.nombre, SUM(b.cantidad) AS total_vendido
-                        FROM ventas b JOIN productos a ON a.id = b.id_producto JOIN sucursales c ON c.id = b.id_sucursal
-                        WHERE c.nombre IN ('Sucursal 1', 'Sucursal 2') GROUP BY a.nombre ORDER BY total_vendido DESC");
-                        
-                        while($row=mysqli_fetch_assoc($ventas)){?>
-                        <div class="tabla-itemv"><?php echo $row["nombre"];?></div>
->>>>>>> f6b77882942a708c014b0d7e4d51f5be3e80a563
                         <div class="tabla-itemv"><?php echo $row["total_vendido"];?></div>
                         <?php } mysqli_free_result($ventas); ?>
                     </div>
                         `;
-<<<<<<< HEAD
                         // Actualizar los valores en la tarjeta
                         primerValorElement.textContent = "<?php echo $primerValor; ?>";
                         segundoValorElement.textContent = "<?php echo $segundoValor; ?>";
@@ -418,14 +337,11 @@ include 'bdd.php';
                         primerValorElement.textContent = "<?php echo $primerValor; ?>";
                         segundoValorElement.textContent = "<?php echo $segundoValor; ?>";
                         tercerValorElement.textContent = "<?php echo $tercerValor; ?>";
-=======
->>>>>>> f6b77882942a708c014b0d7e4d51f5be3e80a563
                         break;
                 }
             }
         </script>
 
-<<<<<<< HEAD
 <footer>
         <div class="footer-contenedor">
             <div class="footer-info">
@@ -463,8 +379,5 @@ include 'bdd.php';
             
         </div>
     </footer>
-=======
-<footer>    </footer>
->>>>>>> f6b77882942a708c014b0d7e4d51f5be3e80a563
 </body>
 </html>

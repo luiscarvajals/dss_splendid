@@ -53,10 +53,17 @@ nav ul a:hover{
 /*COMBOBOX */
 
 .opcion-dropdown{
+<<<<<<< HEAD
 	width: 350px;
 	position: relative;
     top: 40px;
     left: 1400px;
+=======
+	max-width: 250px;
+	position: relative;
+    top: 40px;
+    left: 1500px;
+>>>>>>> f6b77882942a708c014b0d7e4d51f5be3e80a563
 }
 
  
@@ -93,6 +100,7 @@ nav ul a:hover{
 
 /*TABLA DONDE SE MUESTRAN LOS DATSO DE VENTA */
 
+<<<<<<< HEAD
 
 .card {
     display: none;
@@ -207,6 +215,84 @@ nav ul a:hover{
 
 .tabla-tv, .tabla-itemv{
     display: flex;
+=======
+.contenedor-tabla1{
+    width: 90%;
+    display: grid;
+    margin: 50px;
+    background: #ffffff;
+    grid-template-columns: repeat(5,auto);
+    border: 2px solid #000000 ;
+
+}
+
+.tabla-titulo1{
+    grid-column-start: 1;
+    grid-column-end: 6;
+    background: #7fa9e9;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 2em;
+    padding: 5px;
+    border-bottom: 2px solid #000000 ;
+}
+
+.contenedor-tabla2{
+    width: 90%;
+    display: grid;
+    margin: 50px;
+    background: #ffffff;
+    grid-template-columns: repeat(4,auto);
+    border: 2px solid #000000 ;
+
+}
+
+.tabla-titulo2{
+    grid-column-start: 1;
+    grid-column-end: 5;
+    background: #7fa9e9;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 2em;
+    padding: 5px;
+    border-bottom: 2px solid #000000 ;
+}
+
+.contenedor-tabla3{
+    width: 90%;
+    display: grid;
+    margin: 50px;
+    background: #ffffff;
+    grid-template-columns: repeat(2,auto);
+    border: 2px solid #000000 ;
+
+}
+
+.tabla-titulo3{
+    grid-column-start: 1;
+    grid-column-end: 3;
+    background: #7fa9e9;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 2em;
+    padding: 5px;
+    border-bottom: 2px solid #000000 ;
+}
+
+
+
+.tabla-tv, .tabla-itemv{
+    display: flex;
+>>>>>>> f6b77882942a708c014b0d7e4d51f5be3e80a563
     justify-content: center;
     align-items: center;
 }
@@ -246,6 +332,7 @@ nav ul a:hover{
   background: #171A2B;
   color: white;
   }
+<<<<<<< HEAD
 
   /*FOOTER*/
 footer{
@@ -287,3 +374,5 @@ footer{
     text-align: center;
     background-color: #1d396b;
 }
+=======
+>>>>>>> f6b77882942a708c014b0d7e4d51f5be3e80a563

@@ -3,6 +3,7 @@
 <head>
     <title>Dashboard</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
         table {
             width: 100%;
@@ -26,6 +27,8 @@
 <body>
     <!--Grafico de ventas en la ultima semana por sucursal-->
     <h2>Ventas de la última semana</h2>
+    <!-- Llamar a una función para generar el pdf -->
+    <button onclick="generatePDF()" >Guardar imagen en PDF</button>
     <div>
         <label for="sucursal">Sucursal:</label>
         <select id="sucursal" onchange="updateSalesChart(this.value)">
@@ -34,32 +37,39 @@
             <option value="2">ZONA SUR</option>
         </select>
     </div>
-    <canvas id="salesChart" width="400" height="200"></canvas>
+    <div id="reportPage">
+        <div id="chartContainer" style="width: 100%;float: left;">
+            <canvas id="salesChart" width="400" height="200"></canvas>
+        </div>
+    </div>
+    
+
     <?php
     // Conexión a la base de datos
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "tienda_helados";
+    $dbname = "splendid";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
     if ($conn->connect_error) {
         die("Error de conexión: " . $conn->connect_error);
     }
 
-    // Consulta para obtener los datos de ventas semanales
-    $sql = "SELECT DATE_FORMAT(fecha_venta, '%Y-%m-%d') AS fecha, SUM(cantidad_vendida) AS total
-    FROM Ventas
-    WHERE fecha_venta BETWEEN CURDATE() - INTERVAL DAYOFWEEK(CURDATE())-1 DAY AND CURDATE()";
+// Consulta para obtener los datos de ventas semanales
+$sql = "SELECT DATE_FORMAT(fecha_venta, '%Y-%m-%d') AS fecha, SUM(cantidad) AS total
+FROM Ventas
+WHERE fecha_venta BETWEEN CURDATE() -  INTERVAL 7 DAY AND CURDATE()";
 
 if (isset($_GET['sucursal']) && $_GET['sucursal'] !== 'todas') {
-$sucursal = $_GET['sucursal'];
-$sql .= " AND Sucursales_id_sucursal = '$sucursal'";
+    $sucursal = $_GET['sucursal'];
+    $sql .= " AND id_sucursal = '$sucursal'";
 }
 
 $sql .= " GROUP BY fecha_venta";
 
 $result = $conn->query($sql);
+
 
     // Crear un array con los datos de ventas semanales
     $labels = [];
@@ -73,6 +83,7 @@ $result = $conn->query($sql);
     $conn->close();
     ?>
     <script>
+        
         // Obtener el contexto del lienzo del gráfico
         var ctx = document.getElementById('salesChart').getContext('2d');
 
@@ -113,31 +124,78 @@ $result = $conn->query($sql);
             urlParams.set('sucursal', sucursal);
             window.location.search = urlParams.toString();
         }
+        // Función para generar el pdf
+        function generatePDF() {
+            
+            // Verificar que se ejecute la función
+            console.log('click');
+
+            // Crear el PDF y descargarlo
+            var pdf = new jspdf.jsPDF();
+            var content = document.getElementById("reportPage");
+
+            pdf.text("Ventas de la útima semana", 10, 10);
+            //Añadir la fecha actual
+            var date = new Date();
+            var day = date.getDate();
+            var month = date.getMonth() + 1;
+            var year = date.getFullYear();
+            pdf.text("Fecha: " + day + "/" + month + "/" + year, 10, 20);
+            // Añadir el contenido de la página
+
+            // Renderizar elementos canvas en el PDF
+            var canvasElements = content.getElementsByTagName("canvas");
+            for (var i = 0; i < canvasElements.length; i++) {
+                var canvas = canvasElements[i];
+                var imgData = canvas.toDataURL("image/jpeg", 1.0);
+                pdf.addImage(imgData, "JPEG", 10, 30, 180, 120);
+            }
+            // Mostrar el PDF
+            var dataURL=pdf.output('datauristring');
+           //Mostrar el PDF en el navegador
+            pdf.output('dataurlnewwindow');
+        }
     </script>
 
 
 
-    <!--Grafico de pedidos en la ultima semana por sucursal-->
-    <h2>Pedidos de la última semana</h2>
-    
-    <canvas id="pedidosChart" width="400" height="200"></canvas>
+    <!--Grafico de tendecia de Stock por sucursal-->
+    <h2>Stock</h2>
+    <div>
+        <label for="sucursal2">Sucursal:</label>
+        <select id="sucursal2" onchange="updateSalesChart2(this.value)">
+            <option value="todas">Todas las sucursales</option>
+            <option value="1">SAN PEDRO</option>
+            <option value="2">ZONA SUR</option>
+        </select>
+    </div>
+    <button onclick="generatePDF2()" >Guardar imagen en PDF</button>
+    <div id="reportPage2">
+        <div id="pedidosContainer" style="width: 100%;float: left;">
+        <canvas id="pedidosChart" width="400" height="200"></canvas>
+        </div>
+    </div>
     <?php
     // Conexión a la base de datos
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "tienda_helados";
+    $dbname = "splendid";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
     if ($conn->connect_error) {
         die("Error de conexión: " . $conn->connect_error);
     }
 
-    // Consulta para obtener los datos de pedidos semanales
-    $sql = "SELECT DATE_FORMAT(fecha, '%Y-%m-%d') AS fecha, SUM(cantidad_pedido) AS total
-            FROM pedidos
-            WHERE fecha BETWEEN CURDATE() - INTERVAL DAYOFWEEK(CURDATE())-1 DAY AND CURDATE()";
-    $sql .= " GROUP BY fecha";
+    // Consulta para obtener la tendencia de inventario por sucursal
+    $sql = "SELECT DATE_FORMAT(fecha_actualizacion, '%Y-%m-%d') AS fecha, SUM(cantidad) AS total
+            FROM inventario_productos
+            WHERE fecha_actualizacion BETWEEN CURDATE() - INTERVAL 7 DAY AND CURDATE()";
+    if (isset($_GET['sucursal2']) && $_GET['sucursal2'] !== 'todas') {
+        $sucursal = $_GET['sucursal2'];
+        $sql .= " AND id_sucursal = '$sucursal'";
+    }
+    $sql .= " GROUP BY fecha_actualizacion";
 
     $result2 = $conn->query($sql);
 
@@ -186,30 +244,69 @@ $result = $conn->query($sql);
             data: pedidosData,
             options: chartOptions
         });
+        function updateSalesChart2(sucursal2) {
+            var urlParams = new URLSearchParams(window.location.search);
+            urlParams.set('sucursal2', sucursal2);
+            window.location.search = urlParams.toString();
+        }
+        // Función para generar el pdf
+        function generatePDF2() {
+            
+            // Verificar que se ejecute la función
+            console.log('click');
+
+            // Crear el PDF y descargarlo
+            var pdf = new jspdf.jsPDF();
+            var content = document.getElementById("reportPage2");
+
+            pdf.text("Pedidos de la útima semana", 10, 10);
+            //Añadir la fecha actual
+            var date = new Date();
+            var day = date.getDate();
+            var month = date.getMonth() + 1;
+            var year = date.getFullYear();
+            pdf.text("Fecha: " + day + "/" + month + "/" + year, 10, 20);
+            // Añadir el contenido de la página
+
+            // Renderizar elementos canvas en el PDF
+            var canvasElements = content.getElementsByTagName("canvas");
+            for (var i = 0; i < canvasElements.length; i++) {
+                var canvas = canvasElements[i];
+                var imgData = canvas.toDataURL("image/jpeg", 1.0);
+                pdf.addImage(imgData, "JPEG", 10, 30, 180, 120);
+            }
+            // Mostrar el PDF
+            var dataURL=pdf.output('datauristring');
+           //Mostrar el PDF en el navegador
+            pdf.output('dataurlnewwindow');
+        }
     </script>
     
     <!--Grafico de ventas por sabores de helado-->
     <h2>Ventas por sabores de helado</h2>
-    <div class="chart-container">
-        <canvas id="ventasBySaborChart" width="400" height="200"></canvas>
+    <button onclick="generatePDF3()" >Guardar imagen en PDF</button>
+    <div id="reportPage3">
+        <div class="chart-container">
+            <canvas id="ventasBySaborChart" width="400" height="200"></canvas>
+        </div>
     </div>
     <?php
     // Conexión a la base de datos
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "tienda_helados";
+    $dbname = "splendid";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
     if ($conn->connect_error) {
         die("Error de conexión: " . $conn->connect_error);
     }
 
-    $sql = "SELECT s.nombre AS sabor, SUM(v.cantidad_vendida) AS total
+    $sql = "SELECT s.nombre AS sabor, SUM(v.cantidad) AS total
     FROM Ventas v
-    INNER JOIN Productos p ON v.Productos_id_productos = p.id_productos
-    INNER JOIN Sabores s ON p.Sabores_id_sabores = s.id_sabores
-    GROUP BY p.Sabores_id_sabores
+    INNER JOIN Productos p ON v.id_producto = p.id
+    INNER JOIN Sabores s ON p.id_sabor = s.id
+    GROUP BY p.id
     ORDER BY total DESC
     LIMIT 5";
 
@@ -263,6 +360,37 @@ $result3 = $conn->query($sql);
             data: ventasBySaborData,
             options: chartOptions
         });
+        // Función para generar el pdf
+        function generatePDF3() {
+            
+            // Verificar que se ejecute la función
+            console.log('click');
+
+            // Crear el PDF y descargarlo
+            var pdf = new jspdf.jsPDF();
+            var content = document.getElementById("reportPage3");
+
+            pdf.text("Ventas por sabores de healdo", 10, 10);
+            //Añadir la fecha actual
+            var date = new Date();
+            var day = date.getDate();
+            var month = date.getMonth() + 1;
+            var year = date.getFullYear();
+            pdf.text("Fecha: " + day + "/" + month + "/" + year, 10, 20);
+            // Añadir el contenido de la página
+
+            // Renderizar elementos canvas en el PDF
+            var canvasElements = content.getElementsByTagName("canvas");
+            for (var i = 0; i < canvasElements.length; i++) {
+                var canvas = canvasElements[i];
+                var imgData = canvas.toDataURL("image/jpeg", 1.0);
+                pdf.addImage(imgData, "JPEG", 10, 30, 180, 120);
+            }
+            // Mostrar el PDF
+            var dataURL=pdf.output('datauristring');
+           //Mostrar el PDF en el navegador
+            pdf.output('dataurlnewwindow');
+        }
     </script>
 
 
@@ -271,15 +399,21 @@ $result3 = $conn->query($sql);
 
 <!--Grafico de ventas por sucursal-->
 <h2>Ventas por Sucursal</h2>
-    <div class="chart-container">
-        <canvas id="ventasBySucursalChart" width="400" height="200"></canvas>
+
+    <button onclick="generatePDF4()" >Guardar imagen en PDF</button>
+    <div id="reportPage4">
+        <div class="chart-container">
+            <canvas id="ventasBySucursalChart" width="400" height="200"></canvas>
+        </div>
     </div>
+
+    
     <?php
     // Conexión a la base de datos
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "tienda_helados";
+    $dbname = "splendid";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
     if ($conn->connect_error) {
@@ -287,10 +421,10 @@ $result3 = $conn->query($sql);
     }
 
    
-    $sql = "SELECT s.nombre AS sucursal, SUM(v.cantidad_vendida) AS total
+    $sql = "SELECT s.nombre AS sucursal, SUM(v.cantidad) AS total
     FROM Ventas v
-    INNER JOIN Sucursales s ON v.Sucursales_id_sucursal = s.id_sucursal
-    GROUP BY v.Sucursales_id_sucursal";
+    INNER JOIN Sucursales s ON v.id_sucursal = s.id
+    GROUP BY v.id_sucursal";
 
     $result4= $conn->query($sql);
 
@@ -336,8 +470,39 @@ $result3 = $conn->query($sql);
             data: ventasBySucursalData,
             options: chartOptions2
         });
-    </script>
+        // Función para generar el pdf
+        function generatePDF4() {
+            
+            // Verificar que se ejecute la función
+            console.log('click');
 
+            // Crear el PDF y descargarlo
+            var pdf = new jspdf.jsPDF();
+            var content = document.getElementById("reportPage4");
+
+            pdf.text("Ventas por sabores de healdo", 10, 10);
+            //Añadir la fecha actual
+            var date = new Date();
+            var day = date.getDate();
+            var month = date.getMonth() + 1;
+            var year = date.getFullYear();
+            pdf.text("Fecha: " + day + "/" + month + "/" + year, 10, 20);
+            // Añadir el contenido de la página
+
+            // Renderizar elementos canvas en el PDF
+            var canvasElements = content.getElementsByTagName("canvas");
+            for (var i = 0; i < canvasElements.length; i++) {
+                var canvas = canvasElements[i];
+                var imgData = canvas.toDataURL("image/jpeg", 1.0);
+                pdf.addImage(imgData, "JPEG", 10, 30, 180, 120);
+            }
+            // Mostrar el PDF
+            var dataURL=pdf.output('datauristring');
+           //Mostrar el PDF en el navegador
+            pdf.output('dataurlnewwindow');
+        }
+    </script>
+    
 </body>
 </html>
 

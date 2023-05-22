@@ -126,9 +126,11 @@ $conn->close();
             die("Error de conexión: " . $conn->connect_error);
         }
 
-        $sql = "SELECT s.nombre AS sucursal, COUNT(ve.id_empleado) AS cantidad_empleados
-            FROM sucursales s
-            LEFT JOIN ventas_empleados ve ON s.id = ve.id_empleado
+        $sql = "SELECT s.nombre AS sucursal, COUNT(DISTINCT e.id) AS cantidad_empleados
+            FROM sucursales s, ventas_empleados ve, ventas v, empleados e
+            WHERE s.id = v.id_sucursal
+            AND v.id = ve.id_venta
+            AND e.id = ve.id_empleado
             GROUP BY s.nombre";
 
         $result = $conn->query($sql);

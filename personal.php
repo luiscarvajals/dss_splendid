@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "tienda_helados";
+$dbname = "splendid";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -44,6 +44,13 @@ $conn->close();
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .chart-section {
+            margin-top: 45px;
+        }
+    </style>
+    
 
     <nav>
         <a href="index.php"><img src="images/logo.jpeg" alt="logo"></a>
@@ -72,13 +79,13 @@ $conn->close();
                             <img src="<?php echo $empleado['imagen']; ?>" alt="Foto de <?php echo $empleado['nombre']; ?>">
                             <div class="info">
                                 <h3>
-                                    <?php echo "Nombre completo: " . $empleado['nombre'] . " " . $empleado['apellidoP'] . " " . $empleado['apellidoM']; ?>
+                                    <?php echo "Nombre completo: " . $empleado['nombre'] . " " . $empleado['apellido']; ?>
                                 </h3>
                                 <p>
                                     <?php echo "Email:"." ".$empleado['email']; ?>
                                 </p>
                                 <p>
-                                    <?php echo "Puesto:"." ". $empleado['puesto']; ?>
+                                    <?php echo "Cargo:"." ". $empleado['cargo']; ?>
                                 </p>
                                 <p>
                                     <?php echo "Direccion:"." ". $empleado['direccion']; ?>
@@ -96,6 +103,99 @@ $conn->close();
         <a href="eliminar_empleado.php" class="btn btn-primary">Eliminar Empleado</a>
         <a href="modificar_empleado.php" class="btn btn-primary">Modificar Empleado</a>
         <br>
+
+        <!-- Gráfico de empleados por sucursal -->
+        <div class="chart-section">
+            <h2>Empleados por Sucursal</h2>
+            <div class="chart-container">
+                <canvas id="empleadosBySucursalChart" width="400" height="200"></canvas>
+            </div>
+        </div>
+
+
+        <?php
+        // Conexión a la base de datos
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "splendid";
+
+        $conn = new mysqli($servername, $username, $password, $dbname);
+        if ($conn->connect_error) {
+            die("Error de conexión: " . $conn->connect_error);
+        }
+
+        $sql = "SELECT s.nombre AS sucursal, COUNT(ve.id_empleado) AS cantidad_empleados
+            FROM sucursales s
+            LEFT JOIN ventas_empleados ve ON s.id = ve.id_empleado
+            GROUP BY s.nombre";
+
+        $result = $conn->query($sql);
+
+        // Crear un array con los datos de empleados por sucursal
+        $labels = [];
+        $data = [];
+
+        while ($row = $result->fetch_assoc()) {
+            $labels[] = $row["sucursal"];
+            $data[] = $row["cantidad_empleados"];
+        }
+
+        $conn->close();
+        ?>
+
+        <script>
+            // Obtener el contexto del lienzo del gráfico
+            var ctx = document.getElementById('empleadosBySucursalChart').getContext('2d');
+
+            // Datos del gráfico de empleados por sucursal
+            var empleadosBySucursalData = {
+                labels: <?php echo json_encode($labels); ?>,
+                datasets: [{
+                    data: <?php echo json_encode($data); ?>,
+                    backgroundColor: [
+                        '#FF6384',
+                        '#36A2EB',
+                        '#FFCE56',
+                        '#4BC0C0',
+                        '#9966FF'
+                    ],
+                    hoverBackgroundColor: [
+                        '#FF6384',
+                        '#36A2EB',
+                        '#FFCE56',
+                        '#4BC0C0',
+                        '#9966FF'
+                    ]
+                }]
+            };
+
+            // Configuración del gráfico
+            var chartOptions = {
+                responsive: true,
+                tooltips: {
+                    callbacks: {
+                        label: function(tooltipItem, data) {
+                            var dataset = data.datasets[tooltipItem.datasetIndex];
+                            var total = dataset.data.reduce(function(previousValue, currentValue) {
+                                return previousValue + currentValue;
+                            });
+                            var currentValue = dataset.data[tooltipItem.index];
+                            var percentage = Math.floor((currentValue / total) * 100 + 0.5);
+                            return percentage + "%";
+                        }
+                    }
+                }
+            };
+
+            // Crear el gráfico de barras de empleados por sucursal
+            var empleadosBySucursalChart = new Chart(ctx, {
+                type: 'bar',
+                data: empleadosBySucursalData,
+                options: chartOptions
+            });
+        </script>
+
 
         <footer>
             <p>2023 por: Universidad Católica Boliviana "San Pablo"</p>

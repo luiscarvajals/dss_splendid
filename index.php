@@ -5,47 +5,56 @@
 	<title>Iniciar Sesión</title>
 	<script src="jquery-3.5.0.min.js"></script>	
 	<style type="text/css">
-		body{
-			background-image: src('images/cover.jpg');
+		body {
+            background-image: url('images/cover.jpg');
             background-size: cover;
-		}
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
 		
-		div.iniciosesion{
-			background-color: #a1a1a1d4;
-            border-radius: 20px;
-			width: 300px;
-			height: 350px;
-			margin-top: 170px;
-			padding-top: 60px;
-		}
+		div.iniciosesion {
+		background-color: rgba(255, 255, 255, 0.7);
+		border-radius: 20px;
+		width: 300px;
+		height: 350px;
+		margin-top: 170px;
+		padding-top: 60px;
+	}
 
-		h1{
-			color: #000000;
-		}
+	h1 {
+		color: #7f0000;
+		text-align: center;
+	}
 
-		#usuario{
-			background-color: #eee0ff;
-			width: 200px;
-			height: 30px;
-			margin-top: 20px;
-		}
+	#usuario, #password {
+		background-color: #eee0ff;
+		width: 200px;
+		height: 30px;
+		margin-top: 20px;
+		border: none;
+		border-radius: 5px;
+		padding: 5px;
+	}
 
-		#password{
-			background-color: #eee0ff;
-			width: 200px;
-			height: 30px;			
-			margin-top: 20px;
-		}
+	#btnEnviar {
+		background-color: #7f0000;
+		width: 150px;
+		height: 30px;
+		margin-top: 40px;
+		color: white;
+		border: none;
+		border-radius: 20px;
+	}
 
-		#btnEnviar{
-			background-color: #000000; 
-			width: 150px;
-			height: 30px;
-			margin-top: 40px;
-			color: white;
-			border-radius: 20px;					
-		}
-	</style>
+	#btnEnviar:hover {
+		background-color: #a80000;
+		cursor: pointer;
+	}
+</style>
 </head>
 <body>
 	<center>

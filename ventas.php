@@ -34,14 +34,14 @@ include 'bdd.php';
         <div class="tabla-tv">SUCURSAL</div>
         
         <?php 
-        $ventas = mysqli_query($conexion, "SELECT a.cantidad_vendida, a.fecha_venta, b.nombre_cliente, c.nombre
+        $ventas = mysqli_query($conexion, "SELECT a.cantidad_vendida, a.fecha_venta, b.nombre_helado, c.nombre
         FROM ventas a, productos b, sucursales c 
-        WHERE a.Productos_id_producto = b.id_producto
+        WHERE a.Productos_id_productos = b.id_productos
         AND a.Sucursales_id_sucursal = c.id_sucursal");
         while($row=mysqli_fetch_assoc($ventas)){?>
         <div class="tabla-itemv"><?php echo $row["cantidad_vendida"];?></div>
         <div class="tabla-itemv"><?php echo $row["fecha_venta"];?></div>
-        <div class="tabla-itemv"><?php echo $row["nombre_cliente"];?></div>
+        <div class="tabla-itemv"><?php echo $row["nombre_helado"];?></div>
         <div class="tabla-itemv"><?php echo $row["nombre"];?></div>
         <?php } mysqli_free_result($ventas); ?>
     </div>

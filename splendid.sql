@@ -2,10 +2,17 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
+<<<<<<< HEAD
 -- Servidor: 127.0.0.1
 -- Tiempo de generación: 22-05-2023 a las 22:09:50
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
+=======
+-- Host: localhost
+-- Generation Time: May 22, 2023 at 05:16 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
+>>>>>>> master
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +25,24 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
+<<<<<<< HEAD
 -- Base de datos: `splendid`
 --
+=======
+-- Database: `splendid`
+--
+CREATE DATABASE IF NOT EXISTS `splendid` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci;
+USE `splendid`;
+>>>>>>> master
 
 -- --------------------------------------------------------
 
 --
+<<<<<<< HEAD
 -- Estructura de tabla para la tabla `asistencias`
+=======
+-- Table structure for table `asistencias`
+>>>>>>> master
 --
 
 CREATE TABLE `asistencias` (
@@ -34,11 +52,15 @@ CREATE TABLE `asistencias` (
   `id_empleado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
+<<<<<<< HEAD
 --
 -- Volcado de datos para la tabla `asistencias`
 --
 
 INSERT INTO `asistencias` (`id`, `fecha`, `asistio`, `id_empleado`) VALUES
+=======
+INSERT INTO asistencias (id, fecha, asistio, id_empleado) VALUES
+>>>>>>> master
 (1, '2023-05-01', 1, 1),
 (2, '2023-05-01', 1, 2),
 (3, '2023-05-01', 1, 3),
@@ -73,7 +95,11 @@ INSERT INTO `asistencias` (`id`, `fecha`, `asistio`, `id_empleado`) VALUES
 -- --------------------------------------------------------
 
 --
+<<<<<<< HEAD
 -- Estructura de tabla para la tabla `clientes`
+=======
+-- Table structure for table `clientes`
+>>>>>>> master
 --
 
 CREATE TABLE `clientes` (
@@ -84,11 +110,15 @@ CREATE TABLE `clientes` (
   `email` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
+<<<<<<< HEAD
 --
 -- Volcado de datos para la tabla `clientes`
 --
 
 INSERT INTO `clientes` (`id`, `nombre`, `apellido`, `telefono`, `email`) VALUES
+=======
+INSERT INTO clientes (id, nombre, apellido, telefono, email) VALUES
+>>>>>>> master
 (1, 'Juan', 'Pérez', '555-1234', 'juan@example.com'),
 (2, 'María', 'González', '555-5678', 'maria@example.com'),
 (3, 'Pedro', 'López', '555-9012', 'pedro@example.com'),
@@ -108,7 +138,11 @@ INSERT INTO `clientes` (`id`, `nombre`, `apellido`, `telefono`, `email`) VALUES
 -- --------------------------------------------------------
 
 --
+<<<<<<< HEAD
 -- Estructura de tabla para la tabla `empleados`
+=======
+-- Table structure for table `empleados`
+>>>>>>> master
 --
 
 CREATE TABLE `empleados` (
@@ -125,11 +159,15 @@ CREATE TABLE `empleados` (
   `imagen` longblob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
+<<<<<<< HEAD
 --
 -- Volcado de datos para la tabla `empleados`
 --
 
 INSERT INTO `empleados` (`id`, `nombre`, `apellido`, `fecha_nacimiento`, `direccion`, `telefono`, `email`, `cargo`, `sueldo`, `fecha_contratacion`, `imagen`) VALUES
+=======
+INSERT INTO empleados (id, nombre, apellido, fecha_nacimiento, direccion, telefono, email, cargo, sueldo, fecha_contratacion, imagen) VALUES
+>>>>>>> master
 (1, 'Juan', 'Pérez', '1990-05-15', 'Calle Principal 123', '555-1234', 'juan@example.com', 'Encargado', 5000.00, '2020-01-01', ''),
 (2, 'María', 'González', '1995-09-20', 'Avenida Central 456', '555-5678', 'maria@example.com', 'Cajero', 3000.00, '2021-02-15', ''),
 (3, 'Pedro', 'López', '1988-07-10', 'Calle Secundaria 789', '555-9012', 'pedro@example.com', 'Heladero', 3500.00, '2022-03-10', ''),
@@ -149,7 +187,11 @@ INSERT INTO `empleados` (`id`, `nombre`, `apellido`, `fecha_nacimiento`, `direcc
 -- --------------------------------------------------------
 
 --
+<<<<<<< HEAD
 -- Estructura de tabla para la tabla `horarios`
+=======
+-- Table structure for table `horarios`
+>>>>>>> master
 --
 
 CREATE TABLE `horarios` (
@@ -159,11 +201,15 @@ CREATE TABLE `horarios` (
   `id_empleado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
+<<<<<<< HEAD
 --
 -- Volcado de datos para la tabla `horarios`
 --
 
 INSERT INTO `horarios` (`id`, `hora_entrada`, `hora_salida`, `id_empleado`) VALUES
+=======
+INSERT INTO horarios (id, hora_entrada, hora_salida, id_empleado) VALUES
+>>>>>>> master
 (1, '08:00:00', '17:00:00', 1),
 (2, '09:00:00', '18:00:00', 2),
 (3, '10:00:00', '19:00:00', 3),
@@ -179,11 +225,18 @@ INSERT INTO `horarios` (`id`, `hora_entrada`, `hora_salida`, `id_empleado`) VALU
 (13, '10:00:00', '19:00:00', 13),
 (14, '08:30:00', '17:30:00', 14),
 (15, '09:30:00', '18:30:00', 15);
+<<<<<<< HEAD
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `ingredientes`
+=======
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ingredientes`
+>>>>>>> master
 --
 
 CREATE TABLE `ingredientes` (
@@ -193,10 +246,13 @@ CREATE TABLE `ingredientes` (
   `id_unidad_medida` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
+<<<<<<< HEAD
 --
 -- Volcado de datos para la tabla `ingredientes`
 --
 
+=======
+>>>>>>> master
 INSERT INTO `ingredientes` (`id`, `nombre`, `precio`, `id_unidad_medida`) VALUES
 (1, 'Leche', 2.50, 1),
 (2, 'Crema', 3.00, 1),
@@ -207,10 +263,18 @@ INSERT INTO `ingredientes` (`id`, `nombre`, `precio`, `id_unidad_medida`) VALUES
 (7, 'Nueces', 3.50, 2),
 (8, 'Menta', 1.50, 1);
 
+<<<<<<< HEAD
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `inventario_ingredientes`
+=======
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `inventario_ingredientes`
+>>>>>>> master
 --
 
 CREATE TABLE `inventario_ingredientes` (
@@ -223,10 +287,13 @@ CREATE TABLE `inventario_ingredientes` (
   `fecha_actualizacion` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
+<<<<<<< HEAD
 --
 -- Volcado de datos para la tabla `inventario_ingredientes`
 --
 
+=======
+>>>>>>> master
 INSERT INTO `inventario_ingredientes` (`id`, `id_sucursal`, `id_ingrediente`, `id_unidad_medida`, `cantidad`, `cantidad_minima`, `fecha_actualizacion`) VALUES
 (1, 1, 1, 1, 10, 2, '2023-05-01'),
 (2, 1, 2, 1, 8, 3, '2023-05-01'),
@@ -240,7 +307,11 @@ INSERT INTO `inventario_ingredientes` (`id`, `id_sucursal`, `id_ingrediente`, `i
 -- --------------------------------------------------------
 
 --
+<<<<<<< HEAD
 -- Estructura de tabla para la tabla `inventario_productos`
+=======
+-- Table structure for table `inventario_productos`
+>>>>>>> master
 --
 
 CREATE TABLE `inventario_productos` (
@@ -253,7 +324,11 @@ CREATE TABLE `inventario_productos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
+<<<<<<< HEAD
 -- Volcado de datos para la tabla `inventario_productos`
+=======
+-- Dumping data for table `inventario_productos`
+>>>>>>> master
 --
 
 INSERT INTO `inventario_productos` (`id`, `id_sucursal`, `id_producto`, `cantidad`, `cantidad_minima`, `fecha_actualizacion`) VALUES
@@ -266,6 +341,7 @@ INSERT INTO `inventario_productos` (`id`, `id_sucursal`, `id_producto`, `cantida
 (7, 1, 4, 5, 0, '2023-05-01'),
 (8, 2, 4, 10, 0, '2023-05-01'),
 (9, 1, 5, 7, 0, '2023-05-01'),
+<<<<<<< HEAD
 (10, 2, 5, 13, 0, '2023-05-01'),
 (11, 1, 1, 50, 10, '2023-05-22'),
 (12, 1, 3, 30, 5, '2023-05-18'),
@@ -285,11 +361,20 @@ INSERT INTO `inventario_productos` (`id`, `id_sucursal`, `id_producto`, `cantida
 (26, 2, 17, 35, 5, '2023-05-22'),
 (27, 2, 19, 10, 2, '2023-05-21'),
 (28, 2, 20, 30, 5, '2023-05-21');
+=======
+(10, 2, 5, 13, 0, '2023-05-01');
+
+
+>>>>>>> master
 
 -- --------------------------------------------------------
 
 --
+<<<<<<< HEAD
 -- Estructura de tabla para la tabla `ordenes_compra`
+=======
+-- Table structure for table `ordenes_compra`
+>>>>>>> master
 --
 
 CREATE TABLE `ordenes_compra` (
@@ -300,10 +385,13 @@ CREATE TABLE `ordenes_compra` (
   `fecha_compra` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
+<<<<<<< HEAD
 --
 -- Volcado de datos para la tabla `ordenes_compra`
 --
 
+=======
+>>>>>>> master
 INSERT INTO `ordenes_compra` (`id`, `id_proveedor`, `id_ingrediente`, `cantidad`, `fecha_compra`) VALUES
 (1, 1, 1, 500, '2023-05-02'),
 (2, 1, 2, 300, '2023-05-02'),
@@ -316,16 +404,25 @@ INSERT INTO `ordenes_compra` (`id`, `id_proveedor`, `id_ingrediente`, `cantidad`
 (9, 8, 1, 800, '2023-05-09'),
 (10, 9, 2, 600, '2023-05-10');
 
+<<<<<<< HEAD
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `productos`
+=======
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `productos`
+>>>>>>> master
 --
 
 CREATE TABLE `productos` (
   `id` int(11) NOT NULL,
   `nombre` varchar(50) NOT NULL,
   `descripcion` varchar(100) NOT NULL,
+<<<<<<< HEAD
   `precio` decimal(10,2) NOT NULL,
   `id_sabor` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
@@ -379,11 +476,30 @@ INSERT INTO `productos` (`id`, `nombre`, `descripcion`, `precio`, `id_sabor`) VA
 (42, 'Helado de Piña Agua', 'Exquisito helado de piña con base de agua', 2.99, 6),
 (43, 'Helado de Sandía Agua', 'Refrescante helado de sandía con base de agua', 2.99, 7),
 (44, 'Helado de Mango Agua', 'Delicioso helado de mango con base de agua', 2.99, 15);
+=======
+  `precio` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+
+--
+-- Dumping data for table `productos`
+--
+
+INSERT INTO `productos` (`id`, `nombre`, `descripcion`, `precio`) VALUES
+(1, 'Helado (1 porcion)', 'Delicioso helado tradicional con un sabor a elegir', 8.00),
+(2, 'Helado (2 porciones)', 'Delicioso helado tradicional con dos sabores a elegir.', 12.00),
+(3, 'Helado (3 porciones)', 'Delicioso helado tradicional con tres sabores a elegir', 16.00),
+(4, 'Paleta rellena', 'Deliciosa paleta rellena del sabor que desees', 8.50),
+(5, 'Paleta de agua', 'Refrescante paleta en base de agua', 4.00);
+>>>>>>> master
 
 -- --------------------------------------------------------
 
 --
+<<<<<<< HEAD
 -- Estructura de tabla para la tabla `proveedores`
+=======
+-- Table structure for table `proveedores`
+>>>>>>> master
 --
 
 CREATE TABLE `proveedores` (
@@ -393,11 +509,16 @@ CREATE TABLE `proveedores` (
   `email` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
+<<<<<<< HEAD
 --
 -- Volcado de datos para la tabla `proveedores`
 --
 
 INSERT INTO `proveedores` (`id`, `nombre`, `telefono`, `email`) VALUES
+=======
+
+INSERT INTO proveedores (id, nombre, telefono, email) VALUES
+>>>>>>> master
 (1, 'Distribuidora de Lácteos S.A.', '123456789', 'info@distribuidoralacteos.com'),
 (2, 'Frutas Frescas Ltda.', '987654321', 'contacto@frutasfrescas.com'),
 (3, 'Embalajes y Envases Industriales', '555555555', 'ventas@embalajesindustriales.com'),
@@ -408,11 +529,18 @@ INSERT INTO `proveedores` (`id`, `nombre`, `telefono`, `email`) VALUES
 (8, 'Proveedora de Ingredientes Especiales', '444444444', 'contacto@ingredientesespeciales.com'),
 (9, 'Proveedora de Salsas y Jarabes', '666666666', 'ventas@salsasyjarabes.com'),
 (10, 'Distribuidora de Galletas y Barquillos', '888888888', 'info@galletasybarquillos.com');
+<<<<<<< HEAD
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `recetas`
+=======
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `recetas`
+>>>>>>> master
 --
 
 CREATE TABLE `recetas` (
@@ -421,11 +549,15 @@ CREATE TABLE `recetas` (
   `unidades_por_lote` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
+<<<<<<< HEAD
 --
 -- Volcado de datos para la tabla `recetas`
 --
 
 INSERT INTO `recetas` (`id`, `nombre_helado`, `unidades_por_lote`) VALUES
+=======
+INSERT INTO recetas (id, nombre_helado, unidades_por_lote) VALUES
+>>>>>>> master
 (1, 'Helado de Vainilla', 10),
 (2, 'Helado de Chocolate', 10),
 (3, 'Helado de Fresa', 10),
@@ -440,7 +572,11 @@ INSERT INTO `recetas` (`id`, `nombre_helado`, `unidades_por_lote`) VALUES
 -- --------------------------------------------------------
 
 --
+<<<<<<< HEAD
 -- Estructura de tabla para la tabla `recetas_ingredientes`
+=======
+-- Table structure for table `recetas_ingredientes`
+>>>>>>> master
 --
 
 CREATE TABLE `recetas_ingredientes` (
@@ -450,10 +586,13 @@ CREATE TABLE `recetas_ingredientes` (
   `cantidad_materia_prima` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
+<<<<<<< HEAD
 --
 -- Volcado de datos para la tabla `recetas_ingredientes`
 --
 
+=======
+>>>>>>> master
 INSERT INTO `recetas_ingredientes` (`id`, `id_receta`, `id_ingrediente`, `cantidad_materia_prima`) VALUES
 (1, 1, 4, 100),
 (2, 1, 1, 500),
@@ -479,6 +618,7 @@ INSERT INTO `recetas_ingredientes` (`id`, `id_receta`, `id_ingrediente`, `cantid
 (22, 10, 1, 500),
 (23, 10, 2, 200);
 
+<<<<<<< HEAD
 -- --------------------------------------------------------
 
 --
@@ -515,11 +655,17 @@ INSERT INTO `sabores` (`id`, `nombre`) VALUES
 (18, 'Arándano'),
 (19, 'Frutos del Bosque'),
 (20, 'Vainilla');
+=======
+>>>>>>> master
 
 -- --------------------------------------------------------
 
 --
+<<<<<<< HEAD
 -- Estructura de tabla para la tabla `sucursales`
+=======
+-- Table structure for table `sucursales`
+>>>>>>> master
 --
 
 CREATE TABLE `sucursales` (
@@ -529,7 +675,11 @@ CREATE TABLE `sucursales` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
+<<<<<<< HEAD
 -- Volcado de datos para la tabla `sucursales`
+=======
+-- Dumping data for table `sucursales`
+>>>>>>> master
 --
 
 INSERT INTO `sucursales` (`id`, `nombre`, `direccion`) VALUES
@@ -539,7 +689,11 @@ INSERT INTO `sucursales` (`id`, `nombre`, `direccion`) VALUES
 -- --------------------------------------------------------
 
 --
+<<<<<<< HEAD
 -- Estructura de tabla para la tabla `unidades_medida`
+=======
+-- Table structure for table `unidades_medida`
+>>>>>>> master
 --
 
 CREATE TABLE `unidades_medida` (
@@ -549,7 +703,11 @@ CREATE TABLE `unidades_medida` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
+<<<<<<< HEAD
 -- Volcado de datos para la tabla `unidades_medida`
+=======
+-- Dumping data for table `unidades_medida`
+>>>>>>> master
 --
 
 INSERT INTO `unidades_medida` (`id`, `nombre`, `abreviacion`) VALUES
@@ -559,7 +717,11 @@ INSERT INTO `unidades_medida` (`id`, `nombre`, `abreviacion`) VALUES
 -- --------------------------------------------------------
 
 --
+<<<<<<< HEAD
 -- Estructura de tabla para la tabla `ventas`
+=======
+-- Table structure for table `ventas`
+>>>>>>> master
 --
 
 CREATE TABLE `ventas` (
@@ -571,6 +733,7 @@ CREATE TABLE `ventas` (
   `total` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
+<<<<<<< HEAD
 --
 -- Volcado de datos para la tabla `ventas`
 --
@@ -666,11 +829,48 @@ INSERT INTO `ventas` (`id`, `id_sucursal`, `id_producto`, `fecha_venta`, `cantid
 (88, 2, 28, '2023-05-15', 3, 30.00),
 (89, 1, 29, '2023-05-21', 6, 60.00),
 (90, 2, 30, '2023-05-20', 3, 30.00);
+=======
+INSERT INTO `ventas` (`id`, `id_sucursal`, `id_producto`, `fecha_venta`, `cantidad`, `total`) VALUES
+(1, 1, 1, '2023-05-01', 5, 40.00),
+(2, 2, 2, '2023-05-02', 3, 36.00),
+(3, 1, 3, '2023-05-03', 2, 32.00),
+(4, 2, 1, '2023-05-04', 4, 32.00),
+(5, 1, 2, '2023-05-05', 6, 72.00),
+(6, 2, 3, '2023-05-06', 1, 16.00),
+(7, 1, 1, '2023-05-07', 3, 24.00),
+(8, 2, 2, '2023-05-08', 2, 24.00),
+(9, 1, 3, '2023-05-09', 5, 80.00),
+(10, 2, 1, '2023-05-10', 4, 32.00),
+(11, 1, 2, '2023-05-11', 3, 36.00),
+(12, 2, 3, '2023-05-12', 1, 16.00),
+(13, 1, 1, '2023-05-13', 2, 16.00),
+(14, 2, 2, '2023-05-14', 6, 72.00),
+(15, 1, 3, '2023-05-15', 4, 64.00),
+(16, 2, 1, '2023-05-16', 3, 24.00),
+(17, 1, 2, '2023-05-17', 5, 60.00),
+(18, 2, 3, '2023-05-18', 2, 32.00),
+(19, 1, 1, '2023-05-19', 4, 32.00),
+(20, 2, 2, '2023-05-20', 1, 12.00),
+(21, 1, 3, '2023-05-21', 5, 80.00),
+(22, 2, 1, '2023-05-22', 3, 24.00),
+(23, 2, 2, '2023-05-01', 2, 24.00),
+(24, 1, 3, '2023-05-01', 3, 48.00),
+(25, 2, 1, '2023-05-02', 1, 8.00),
+(26, 1, 2, '2023-05-02', 4, 48.00),
+(27, 2, 3, '2023-05-03', 2, 32.00),
+(28, 1, 1, '2023-05-03', 3, 24.00),
+(29, 2, 2, '2023-05-04', 1, 12.00),
+(30, 1, 3, '2023-05-04', 4, 64.00);
+>>>>>>> master
 
 -- --------------------------------------------------------
 
 --
+<<<<<<< HEAD
 -- Estructura de tabla para la tabla `ventas_empleados`
+=======
+-- Table structure for table `ventas_empleados`
+>>>>>>> master
 --
 
 CREATE TABLE `ventas_empleados` (
@@ -679,10 +879,13 @@ CREATE TABLE `ventas_empleados` (
   `id_venta` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
+<<<<<<< HEAD
 --
 -- Volcado de datos para la tabla `ventas_empleados`
 --
 
+=======
+>>>>>>> master
 INSERT INTO `ventas_empleados` (`id`, `id_empleado`, `id_venta`) VALUES
 (1, 1, 1),
 (2, 2, 2),
@@ -715,10 +918,18 @@ INSERT INTO `ventas_empleados` (`id`, `id_empleado`, `id_venta`) VALUES
 (29, 2, 29),
 (30, 1, 30);
 
+<<<<<<< HEAD
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `ventas_por_cliente`
+=======
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ventas_por_cliente`
+>>>>>>> master
 --
 
 CREATE TABLE `ventas_por_cliente` (
@@ -727,10 +938,13 @@ CREATE TABLE `ventas_por_cliente` (
   `id_venta` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
+<<<<<<< HEAD
 --
 -- Volcado de datos para la tabla `ventas_por_cliente`
 --
 
+=======
+>>>>>>> master
 INSERT INTO `ventas_por_cliente` (`id`, `id_cliente`, `id_venta`) VALUES
 (1, 1, 1),
 (2, 2, 2),
@@ -763,44 +977,74 @@ INSERT INTO `ventas_por_cliente` (`id`, `id_cliente`, `id_venta`) VALUES
 (29, 2, 29),
 (30, 1, 30);
 
+<<<<<<< HEAD
 --
 -- Índices para tablas volcadas
 --
 
 --
 -- Indices de la tabla `asistencias`
+=======
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `asistencias`
+>>>>>>> master
 --
 ALTER TABLE `asistencias`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_empleado` (`id_empleado`);
 
 --
+<<<<<<< HEAD
 -- Indices de la tabla `clientes`
+=======
+-- Indexes for table `clientes`
+>>>>>>> master
 --
 ALTER TABLE `clientes`
   ADD PRIMARY KEY (`id`);
 
 --
+<<<<<<< HEAD
 -- Indices de la tabla `empleados`
+=======
+-- Indexes for table `empleados`
+>>>>>>> master
 --
 ALTER TABLE `empleados`
   ADD PRIMARY KEY (`id`);
 
 --
+<<<<<<< HEAD
 -- Indices de la tabla `horarios`
+=======
+-- Indexes for table `horarios`
+>>>>>>> master
 --
 ALTER TABLE `horarios`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_empleado` (`id_empleado`);
 
 --
+<<<<<<< HEAD
 -- Indices de la tabla `ingredientes`
+=======
+-- Indexes for table `ingredientes`
+>>>>>>> master
 --
 ALTER TABLE `ingredientes`
   ADD PRIMARY KEY (`id`);
 
 --
+<<<<<<< HEAD
 -- Indices de la tabla `inventario_ingredientes`
+=======
+-- Indexes for table `inventario_ingredientes`
+>>>>>>> master
 --
 ALTER TABLE `inventario_ingredientes`
   ADD PRIMARY KEY (`id`),
@@ -809,7 +1053,11 @@ ALTER TABLE `inventario_ingredientes`
   ADD KEY `id_ingrediente` (`id_ingrediente`);
 
 --
+<<<<<<< HEAD
 -- Indices de la tabla `inventario_productos`
+=======
+-- Indexes for table `inventario_productos`
+>>>>>>> master
 --
 ALTER TABLE `inventario_productos`
   ADD PRIMARY KEY (`id`),
@@ -817,7 +1065,11 @@ ALTER TABLE `inventario_productos`
   ADD KEY `id_sucursal` (`id_sucursal`) USING BTREE;
 
 --
+<<<<<<< HEAD
 -- Indices de la tabla `ordenes_compra`
+=======
+-- Indexes for table `ordenes_compra`
+>>>>>>> master
 --
 ALTER TABLE `ordenes_compra`
   ADD PRIMARY KEY (`id`),
@@ -825,25 +1077,41 @@ ALTER TABLE `ordenes_compra`
   ADD KEY `id_ingrediente` (`id_ingrediente`);
 
 --
+<<<<<<< HEAD
 -- Indices de la tabla `productos`
+=======
+-- Indexes for table `productos`
+>>>>>>> master
 --
 ALTER TABLE `productos`
   ADD PRIMARY KEY (`id`);
 
 --
+<<<<<<< HEAD
 -- Indices de la tabla `proveedores`
+=======
+-- Indexes for table `proveedores`
+>>>>>>> master
 --
 ALTER TABLE `proveedores`
   ADD PRIMARY KEY (`id`);
 
 --
+<<<<<<< HEAD
 -- Indices de la tabla `recetas`
+=======
+-- Indexes for table `recetas`
+>>>>>>> master
 --
 ALTER TABLE `recetas`
   ADD PRIMARY KEY (`id`);
 
 --
+<<<<<<< HEAD
 -- Indices de la tabla `recetas_ingredientes`
+=======
+-- Indexes for table `recetas_ingredientes`
+>>>>>>> master
 --
 ALTER TABLE `recetas_ingredientes`
   ADD PRIMARY KEY (`id`),
@@ -851,6 +1119,7 @@ ALTER TABLE `recetas_ingredientes`
   ADD KEY `id_ingrediente` (`id_ingrediente`);
 
 --
+<<<<<<< HEAD
 -- Indices de la tabla `sabores`
 --
 ALTER TABLE `sabores`
@@ -858,18 +1127,29 @@ ALTER TABLE `sabores`
 
 --
 -- Indices de la tabla `sucursales`
+=======
+-- Indexes for table `sucursales`
+>>>>>>> master
 --
 ALTER TABLE `sucursales`
   ADD PRIMARY KEY (`id`);
 
 --
+<<<<<<< HEAD
 -- Indices de la tabla `unidades_medida`
+=======
+-- Indexes for table `unidades_medida`
+>>>>>>> master
 --
 ALTER TABLE `unidades_medida`
   ADD PRIMARY KEY (`id`);
 
 --
+<<<<<<< HEAD
 -- Indices de la tabla `ventas`
+=======
+-- Indexes for table `ventas`
+>>>>>>> master
 --
 ALTER TABLE `ventas`
   ADD PRIMARY KEY (`id`),
@@ -877,7 +1157,11 @@ ALTER TABLE `ventas`
   ADD KEY `id_sucursal` (`id_sucursal`);
 
 --
+<<<<<<< HEAD
 -- Indices de la tabla `ventas_empleados`
+=======
+-- Indexes for table `ventas_empleados`
+>>>>>>> master
 --
 ALTER TABLE `ventas_empleados`
   ADD PRIMARY KEY (`id`),
@@ -885,7 +1169,11 @@ ALTER TABLE `ventas_empleados`
   ADD KEY `id_venta` (`id_venta`);
 
 --
+<<<<<<< HEAD
 -- Indices de la tabla `ventas_por_cliente`
+=======
+-- Indexes for table `ventas_por_cliente`
+>>>>>>> master
 --
 ALTER TABLE `ventas_por_cliente`
   ADD PRIMARY KEY (`id`),
@@ -893,6 +1181,7 @@ ALTER TABLE `ventas_por_cliente`
   ADD KEY `id_venta` (`id_venta`);
 
 --
+<<<<<<< HEAD
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -976,17 +1265,101 @@ ALTER TABLE `sabores`
 
 --
 -- AUTO_INCREMENT de la tabla `sucursales`
+=======
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `asistencias`
+--
+ALTER TABLE `asistencias`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `clientes`
+--
+ALTER TABLE `clientes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `empleados`
+--
+ALTER TABLE `empleados`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `horarios`
+--
+ALTER TABLE `horarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `ingredientes`
+--
+ALTER TABLE `ingredientes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `inventario_ingredientes`
+--
+ALTER TABLE `inventario_ingredientes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `inventario_productos`
+--
+ALTER TABLE `inventario_productos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `ordenes_compra`
+--
+ALTER TABLE `ordenes_compra`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `productos`
+--
+ALTER TABLE `productos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `proveedores`
+--
+ALTER TABLE `proveedores`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `recetas`
+--
+ALTER TABLE `recetas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `recetas_ingredientes`
+--
+ALTER TABLE `recetas_ingredientes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `sucursales`
+>>>>>>> master
 --
 ALTER TABLE `sucursales`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+<<<<<<< HEAD
 -- AUTO_INCREMENT de la tabla `unidades_medida`
+=======
+-- AUTO_INCREMENT for table `unidades_medida`
+>>>>>>> master
 --
 ALTER TABLE `unidades_medida`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+<<<<<<< HEAD
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
@@ -1010,18 +1383,51 @@ ALTER TABLE `ventas_por_cliente`
 
 --
 -- Filtros para la tabla `asistencias`
+=======
+-- AUTO_INCREMENT for table `ventas`
+--
+ALTER TABLE `ventas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `ventas_empleados`
+--
+ALTER TABLE `ventas_empleados`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `ventas_por_cliente`
+--
+ALTER TABLE `ventas_por_cliente`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `asistencias`
+>>>>>>> master
 --
 ALTER TABLE `asistencias`
   ADD CONSTRAINT `asistencias_ibfk_1` FOREIGN KEY (`id_empleado`) REFERENCES `empleados` (`id`) ON DELETE CASCADE;
 
 --
+<<<<<<< HEAD
 -- Filtros para la tabla `horarios`
+=======
+-- Constraints for table `horarios`
+>>>>>>> master
 --
 ALTER TABLE `horarios`
   ADD CONSTRAINT `horarios_ibfk_1` FOREIGN KEY (`id_empleado`) REFERENCES `empleados` (`id`) ON DELETE CASCADE;
 
 --
+<<<<<<< HEAD
 -- Filtros para la tabla `inventario_ingredientes`
+=======
+-- Constraints for table `inventario_ingredientes`
+>>>>>>> master
 --
 ALTER TABLE `inventario_ingredientes`
   ADD CONSTRAINT `inventario_ingredientes_ibfk_1` FOREIGN KEY (`id_unidad_medida`) REFERENCES `unidades_medida` (`id`) ON DELETE CASCADE,
@@ -1029,42 +1435,66 @@ ALTER TABLE `inventario_ingredientes`
   ADD CONSTRAINT `inventario_ingredientes_ibfk_3` FOREIGN KEY (`id_ingrediente`) REFERENCES `ingredientes` (`id`);
 
 --
+<<<<<<< HEAD
 -- Filtros para la tabla `inventario_productos`
+=======
+-- Constraints for table `inventario_productos`
+>>>>>>> master
 --
 ALTER TABLE `inventario_productos`
   ADD CONSTRAINT `inventario_productos_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `inventario_productos_ibfk_2` FOREIGN KEY (`id_sucursal`) REFERENCES `sucursales` (`id`);
 
 --
+<<<<<<< HEAD
 -- Filtros para la tabla `ordenes_compra`
+=======
+-- Constraints for table `ordenes_compra`
+>>>>>>> master
 --
 ALTER TABLE `ordenes_compra`
   ADD CONSTRAINT `ordenes_compra_ibfk_1` FOREIGN KEY (`id_proveedor`) REFERENCES `proveedores` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `ordenes_compra_ibfk_2` FOREIGN KEY (`id_ingrediente`) REFERENCES `inventario_ingredientes` (`id`) ON DELETE CASCADE;
 
 --
+<<<<<<< HEAD
 -- Filtros para la tabla `recetas_ingredientes`
+=======
+-- Constraints for table `recetas_ingredientes`
+>>>>>>> master
 --
 ALTER TABLE `recetas_ingredientes`
   ADD CONSTRAINT `recetas_ingredientes_ibfk_1` FOREIGN KEY (`id_receta`) REFERENCES `recetas` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `recetas_ingredientes_ibfk_2` FOREIGN KEY (`id_ingrediente`) REFERENCES `ingredientes` (`id`) ON DELETE CASCADE;
 
 --
+<<<<<<< HEAD
 -- Filtros para la tabla `ventas`
+=======
+-- Constraints for table `ventas`
+>>>>>>> master
 --
 ALTER TABLE `ventas`
   ADD CONSTRAINT `ventas_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `ventas_ibfk_2` FOREIGN KEY (`id_sucursal`) REFERENCES `sucursales` (`id`);
 
 --
+<<<<<<< HEAD
 -- Filtros para la tabla `ventas_empleados`
+=======
+-- Constraints for table `ventas_empleados`
+>>>>>>> master
 --
 ALTER TABLE `ventas_empleados`
   ADD CONSTRAINT `ventas_empleados_ibfk_1` FOREIGN KEY (`id_empleado`) REFERENCES `empleados` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `ventas_empleados_ibfk_2` FOREIGN KEY (`id_venta`) REFERENCES `ventas` (`id`) ON DELETE CASCADE;
 
 --
+<<<<<<< HEAD
 -- Filtros para la tabla `ventas_por_cliente`
+=======
+-- Constraints for table `ventas_por_cliente`
+>>>>>>> master
 --
 ALTER TABLE `ventas_por_cliente`
   ADD CONSTRAINT `ventas_por_cliente_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id`) ON DELETE CASCADE,

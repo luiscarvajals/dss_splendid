@@ -60,20 +60,46 @@ nav ul a:hover{
     align-items: center;
 }
 
+/*FOOTER*/
+
 footer{
-    height: 40px;
-    background-color: #1d396b;
-    margin-top: 60px;
+    padding-top: 80px;
+    color: white;    
+    font-size: 18px;
+}
+
+.footer-contenedor{
+    background-color: #5d5f61;
+    padding-top: 20px;
+}
+
+
+.footer-info{
     display: flex;
-    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.infoimg{
+    display: flex;
     justify-content: center;
     align-items: center;
 }
 
-footer p{
-    margin: 0;
-    padding: 0;
-    color: white;    
-    font-size: 18px;
+.footer-contact .p1{
+    text-align: center;
+    color: rgb(190, 188, 188);  
 }
+
+.footer-contact img{
+    width: 30px;
+    height: 35px;
+    padding-right: 10px;
+}
+
+.info{
+    text-align: center;
+    background-color: #1d396b;
+}
+
 

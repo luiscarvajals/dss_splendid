@@ -62,6 +62,7 @@ $conn->close();
             <li><a href="#">SALIR</a></li>
         </ul>
     </nav>
+<<<<<<< HEAD
 </head>
 
 <body>
@@ -196,10 +197,71 @@ $conn->close();
             });
         </script>
 
+=======
+    <table>
+    <thead>
+        <tr>
+            <th>NOMBRE</th>
+            <th>ROL</th>
+            <th>HORARIO</th>
+            <th>RENDIMIENTO</th>
+            <th>SUCURSAL</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php 
+        $empleados = mysqli_query($conexion, "SELECT a.nombre, a.direccion, CONCAT(b.hora_entrada, ' - ', b.hora_salida) AS horario, a.telefono
+        FROM empleados a, horarios b
+        WHERE a.id = b.id_empleado");
+        while($row=mysqli_fetch_assoc($empleados)){?>
+        <tr>
+            <td><?php echo $row["nombre"];?></td>
+            <td><?php echo $row["direccion"];?></td>
+            <td><?php echo $row["horario"];?></td>
+            <td><?php echo $row["telefono"];?></td>
+        </tr>
+        <?php } mysqli_free_result($empleados); ?>
+    </tbody>
+</table>
+>>>>>>> f6b77882942a708c014b0d7e4d51f5be3e80a563
 
-        <footer>
-            <p>2023 por: Universidad Católica Boliviana "San Pablo"</p>
-        </footer>
+    <footer>
+        <div class="footer-contenedor">
+            <div class="footer-info">
+                <div class="footer-contact">
+                    <div class="infoimg">
+                    <img src="images/whatsapp.png" alt="hero">
+                    <p>TELEFONO: </p>
+                    </div>
+
+                    <p class="p1">271825944 </p>
+                </div>
+
+                <div class="footer-contact">
+                    <div class="infoimg">
+                    <img src="images/sucursal.png" alt="hero">
+                    <p>SUCURSALES: </p>
+                    </div>
+
+                    <p class="p1">Zona San Pedro Calle, Nicolás Acosta N°420</p>
+                    <p class="p1">Zona Sur, Calle 15 de Calacoto</p>
+                </div>
+
+                <div class="footer-contact">
+                    <div class="infoimg">
+                    <img src="images/facebook.png" alt="hero">
+                    <p >FACEBOOK: </p>
+                    </div>
+
+                    <p class="p1">Helados Splendid La Paz Bolivia </p>
+                </div>
+            </div>
+            <div class="info">
+                <p>2023 por: Universidad Católica Boliviana "San Pablo"</p>
+            </div>
+            
+        </div>
+    </footer>
         <script>
             AOS.init({
                 duration: 1000

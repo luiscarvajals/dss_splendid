@@ -62,7 +62,6 @@ $conn->close();
             <li><a href="#">SALIR</a></li>
         </ul>
     </nav>
-<<<<<<< HEAD
 </head>
 
 <body>
@@ -199,33 +198,6 @@ $conn->close();
             });
         </script>
 
-=======
-    <table>
-    <thead>
-        <tr>
-            <th>NOMBRE</th>
-            <th>ROL</th>
-            <th>HORARIO</th>
-            <th>RENDIMIENTO</th>
-            <th>SUCURSAL</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php 
-        $empleados = mysqli_query($conexion, "SELECT a.nombre, a.direccion, CONCAT(b.hora_entrada, ' - ', b.hora_salida) AS horario, a.telefono
-        FROM empleados a, horarios b
-        WHERE a.id = b.id_empleado");
-        while($row=mysqli_fetch_assoc($empleados)){?>
-        <tr>
-            <td><?php echo $row["nombre"];?></td>
-            <td><?php echo $row["direccion"];?></td>
-            <td><?php echo $row["horario"];?></td>
-            <td><?php echo $row["telefono"];?></td>
-        </tr>
-        <?php } mysqli_free_result($empleados); ?>
-    </tbody>
-</table>
->>>>>>> f6b77882942a708c014b0d7e4d51f5be3e80a563
 
     <footer>
         <div class="footer-contenedor">

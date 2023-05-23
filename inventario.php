@@ -20,20 +20,18 @@
     </style>
 </head>
 <body>
+    <!-- INVENTARIO GENERAL -->
     <?php
         include("bdd.php");
-        $sql=
-        "SELECT p.nombre AS helado, SUM(ip.cantidad) AS total_cantidad
-        FROM productos p, sucursales s, inventario_productos ip
-        WHERE ip.id_producto = p.id
-        AND ip.id_sucursal = s.id
-        GROUP BY p.nombre";// aqui va el query o consulta
+        $sql="SELECT a.id, a.id_sucursal, b.nombre, a.cantidad, a.fecha_actualizacion
+        FROM inventario_productos a, productos b
+        WHERE a.id_producto = b.id"; // aqui va el query o consulta
         $resultado=mysqli_query($conexion, $sql); // se almacenan los resultados entregados por el query en $resultado
     ?>
     <nav>
         <a href="index.php"><img src="images/logo.jpeg" alt="logo"></a>
         <ul>
-            <li><a href="index.php">INICIO</a></li>
+            <li><a href="inicio.php">INICIO</a></li>
             <li><a href="ventas.php">VENTAS</a></li>
             <li><a href="personal.php">PERSONAL</a></li>
             <li><a href="inventario.php">INVENTARIO</a></li>
@@ -42,13 +40,22 @@
     </nav>
     <div class="contenedor">
         <h1>INVENTARIO DE HELADO</h1>
-        <table>
+        <select name="um" id="um" class="select_opt">
+            <option value="">[seleccione la vista]</option>
+            <option value="tabla-general">General</option>
+            <option value="tabla-sucursal-1">Sucursal 1</option>
+            <option value="tabla-sucursal-2">Sucursal 2</option>
+        </select>
+        
+        <table class="table-fill" id="tabla-general">
             <thead>
                 <tr>
-                    <th>HELADO</th>
-                    <!-- <th>SUCURSAL</th> -->
-                    <th>CANTIDAD</th>
-                    <th>ACCIONES</th>
+                    <th class="text-left">ID</th>
+                    <th class="text-left">SUCURSAL</th>
+                    <th class="text-left">NOMBRE</th>
+                    <th class="text-left">CANTIDAD</th>
+                    <th class="text-left">FECHA ACTUALIZACION</th>
+                    <th class="text-left">ACCIONES</th>
                 </tr>
             </thead>
             <tbody>
@@ -56,13 +63,111 @@
                     while($fila=mysqli_fetch_array($resultado)){ // recorriendo cada fila del resultado
                 ?>
                 <tr>
-                    <td> <?php echo $fila["helado"] ?> </td>
-                    <!-- <td> <?php echo $fila["nombre"] ?> </td> -->
-                    <td> <?php echo $fila["total_cantidad"] ?> </td>
-                    <td>
-                        <?php echo "<a href=''>EDITAR</a>"; ?>
+                    <td class="text-left"> <?php echo $fila["id"] ?> </td>
+                    <td class="text-left"> <?php echo $fila["id_sucursal"] ?> </td>
+                    <td class="text-left"> <?php echo $fila["nombre"] ?> </td>
+                    <td class="text-left"> <?php echo $fila["cantidad"] ?> </td>
+                    <td class="text-left"> <?php echo $fila["fecha_actualizacion"] ?> </td>
+                    <td class="text-left">
+                        <?php echo "<a href='#'>EDITAR</a>"; ?>
                         -
-                        <?php echo "<a href=''>ELIMINAR</a>"; ?>
+                        <?php echo "<a href='#'>ELIMINAR</a>"; ?>
+                    </td>
+                </tr>
+                <?php
+                    }
+                ?>
+            </tbody>
+        </table>
+        <?php
+            mysqli_free_result($resultado);
+            mysqli_close($conexion);
+        ?>
+
+<br>
+
+        <!-- INVENTARIO SUCURSAL 1 -->
+    <?php
+        include("bdd.php");
+        $sql="SELECT a.id, a.id_sucursal, b.nombre, a.cantidad, a.fecha_actualizacion
+        FROM inventario_productos a, productos b
+        WHERE a.id_producto = b.id AND a.id_sucursal = 1"; // aqui va el query o consulta
+        $resultado=mysqli_query($conexion, $sql); // se almacenan los resultados entregados por el query en $resultado
+    ?>
+
+        <table class="table-fill" id="tabla-sucursal-1">
+            <thead>
+                <tr>
+                    <th class="text-left">ID</th>
+                    <th class="text-left">SUCURSAL</th>
+                    <th class="text-left">NOMBRE</th>
+                    <th class="text-left">CANTIDAD</th>
+                    <th class="text-left">FECHA ACTUALIZACION</th>
+                    <th class="text-left">ACCIONES</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                    while($fila=mysqli_fetch_array($resultado)){ // recorriendo cada fila del resultado
+                ?>
+                <tr>
+                    <td class="text-left"> <?php echo $fila["id"] ?> </td>
+                    <td class="text-left"> <?php echo $fila["id_sucursal"] ?> </td>
+                    <td class="text-left"> <?php echo $fila["nombre"] ?> </td>
+                    <td class="text-left"> <?php echo $fila["cantidad"] ?> </td>
+                    <td class="text-left"> <?php echo $fila["fecha_actualizacion"] ?> </td>
+                    <td class="text-left">
+                        <?php echo "<a href='#'>EDITAR</a>"; ?>
+                        -
+                        <?php echo "<a href='#'>ELIMINAR</a>"; ?>
+                    </td>
+                </tr>
+                <?php
+                    }
+                ?>
+            </tbody>
+        </table>
+        <?php
+            mysqli_free_result($resultado);
+            mysqli_close($conexion);
+        ?>
+
+<br>
+
+        <!-- INVENTARIO SUCURSAL 2 -->
+        <?php
+        include("bdd.php");
+        $sql="SELECT a.id, a.id_sucursal, b.nombre, a.cantidad, a.fecha_actualizacion
+        FROM inventario_productos a, productos b
+        WHERE a.id_producto = b.id AND a.id_sucursal = 2"; // aqui va el query o consulta
+        $resultado=mysqli_query($conexion, $sql); // se almacenan los resultados entregados por el query en $resultado
+        ?>
+
+        <table class="table-fill" id="tabla-sucursal-2">
+            <thead>
+                <tr>
+                    <th class="text-left">ID</th>
+                    <th class="text-left">SUCURSAL</th>
+                    <th class="text-left">NOMBRE</th>
+                    <th class="text-left">CANTIDAD</th>
+                    <th class="text-left">FECHA ACTUALIZACION</th>
+                    <th class="text-left">ACCIONES</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                    while($fila=mysqli_fetch_array($resultado)){ // recorriendo cada fila del resultado
+                ?>
+                <tr>
+                    <td class="text-left"> <?php echo $fila["id"] ?> </td>
+                    <td class="text-left"> <?php echo $fila["id_sucursal"] ?> </td>
+                    <td class="text-left"> <?php echo $fila["nombre"] ?> </td>
+                    <td class="text-left"> <?php echo $fila["cantidad"] ?> </td>
+                    <td class="text-left"> <?php echo $fila["fecha_actualizacion"] ?> </td>
+                    <td class="text-left">
+                        <?php echo "<a href='#'>EDITAR</a>"; ?>
+                        -
+                        <?php echo "<a href='#'>ELIMINAR</a>"; ?>
                     </td>
                 </tr>
                 <?php
@@ -278,7 +383,7 @@
             <div class="footer-info">
                 <div class="footer-contact">
                     <div class="infoimg">
-                    <img src="images/whatsapp.png" alt="hero">
+                    <!-- <img src="images/whatsapp.png" alt="hero"> -->
                     <p>TELEFONO: </p>
                     </div>
 
@@ -287,7 +392,7 @@
 
                 <div class="footer-contact">
                     <div class="infoimg">
-                    <img src="images/sucursal.png" alt="hero">
+                    <!-- <img src="images/sucursal.png" alt="hero"> -->
                     <p>SUCURSALES: </p>
                     </div>
 
@@ -297,7 +402,7 @@
 
                 <div class="footer-contact">
                     <div class="infoimg">
-                    <img src="images/facebook.png" alt="hero">
+                    <!-- <img src="images/facebook.png" alt="hero"> -->
                     <p >FACEBOOK: </p>
                     </div>
 
@@ -311,4 +416,24 @@
         </div>
     </footer>
 </body>
+
+<script>
+    var tables = [
+        document.getElementById('tabla-general'),
+        document.getElementById('tabla-sucursal-1'),
+        document.getElementById('tabla-sucursal-2')
+    ];
+
+    document.getElementById('um').onchange = function() {
+        // hide all tables
+        for (var i in tables) {
+            tables[i].style.display = "none";
+        }
+        // get selected value and show it's table
+        var selectedValue = this[this.selectedIndex].value;
+        if (selectedValue) {
+            document.getElementById(selectedValue).style.display = "table";
+        }
+    };
+</script>
 </html>

@@ -132,7 +132,7 @@
                             <input type="text" class="form-control" id="puesto" name="puesto">
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="direccion">Direccion:</label>
+                            <label for="direccion">Dirección:</label>
                             <input type="text" class="form-control" id="direccion" name="direccion">
                         </div>
                     </div>

@@ -1,24 +1,24 @@
 <?php
 // Conexión con la base de datos
 
-$conexion = mysqli_connect('localhost', 'root', '', 'tienda_helados');
+$conexion = mysqli_connect('localhost', 'root', '', 'splendid');
 
 $nombre = $_POST['nombre'];
-$apellidoP = $_POST['apellidoP'];
-$apellidoM = $_POST['apellidoM'];
-$email = $_POST['email'];
-$puesto = $_POST['puesto'];
+$apellido = $_POST['apellido'];
+$fecha_nacimiento = $_POST['fecha_nacimiento'];
 $direccion = $_POST['direccion'];
+$telefono = $_POST['telefono'];
+$email = $_POST['email'];
+$cargo = $_POST['cargo'];
+$sueldo = $_POST['sueldo'];
+$fecha_contratacion = $_POST['fecha_contratacion'];
 
-// INSERT INTO 
 
-$sql = "INSERT INTO empleados (nombre,apellidoP,apellidoM,email,puesto,direccion) 
-    VALUES ('$nombre','$apellidoP','$apellidoM','$email','$puesto','$direccion')";
+// INSERT INTO query
 
-if (mysqli_query($conexion, $sql)) {
-    echo 1; // En lugar de echo mysqli_query()
-} else {
-    echo 0;
-}
+$sql = "INSERT INTO empleados (nombre,apellido,fecha_nacimiento,direccion,telefono,email,cargo,sueldo,fecha_contratacion)) 
+    VALUES ('$nombre','$apellido','$fecha_nacimiento','$direccion','$telefono','$email','$cargo','$sueldo','$fecha_contratacion')";
+
+echo mysqli_query($conexion, $sql);	
 
 ?>

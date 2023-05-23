@@ -32,9 +32,9 @@
     <div>
         <label for="sucursal">Sucursal:</label>
         <select id="sucursal" onchange="updateSalesChart(this.value)">
-            <option value="todas">Todas las sucursales</option>
-            <option value="1">SAN PEDRO</option>
-            <option value="2">ZONA SUR</option>
+            <option value="todas" <?php if (isset($_GET['sucursal']) && $_GET['sucursal'] === 'todas') echo 'selected'; ?>>Todas las sucursales</option>
+            <option value="1" <?php if (isset($_GET['sucursal']) && $_GET['sucursal'] === '1') echo 'selected'; ?>>SAN PEDRO</option>
+            <option value="2" <?php if (isset($_GET['sucursal']) && $_GET['sucursal'] === '2') echo 'selected'; ?>>ZONA SUR</option>
         </select>
     </div>
     <div id="reportPage">
@@ -164,9 +164,9 @@ $result = $conn->query($sql);
     <div>
         <label for="sucursal2">Sucursal:</label>
         <select id="sucursal2" onchange="updateSalesChart2(this.value)">
-            <option value="todas">Todas las sucursales</option>
-            <option value="1">SAN PEDRO</option>
-            <option value="2">ZONA SUR</option>
+            <option value="todas" <?php if (isset($_GET['sucursal2']) && $_GET['sucursal2'] === 'todas') echo 'selected'; ?>>Todas las sucursales</option>
+            <option value="1" <?php if (isset($_GET['sucursal2']) && $_GET['sucursal2'] === '1') echo 'selected'; ?>>SAN PEDRO</option>
+            <option value="2" <?php if (isset($_GET['sucursal2']) && $_GET['sucursal2'] === '2') echo 'selected'; ?>>ZONA SUR</option>
         </select>
     </div>
     <button onclick="generatePDF2()" >Guardar imagen en PDF</button>

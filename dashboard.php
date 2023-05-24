@@ -1,40 +1,76 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Dashboard</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/index.css'>
+    <script src='js/index.js'></script>
+    <script src='personalstyle.css'></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         table {
             width: 100%;
             border-collapse: collapse;
         }
-        th, td {
+
+        th,
+        td {
             padding: 8px;
             text-align: left;
             border-bottom: 1px solid #ddd;
         }
+
         th {
             background-color: #f2f2f2;
         }
+
         .chart-container {
             width: 800px;
             height: 400px;
             margin: 0 auto;
         }
     </style>
+
+    <nav>
+        <a href="index.php"><img src="images/logo.jpeg" alt="logo"></a>
+        <ul>
+            <li><a href="inicio.php">INICIO</a></li>
+            <li><a href="ventas.php">VENTAS</a></li>
+            <li><a href="personal.php">PERSONAL</a></li>
+            <li><a href="dashboard.php">DASHBOARD</a></li>
+            <li><a href="inventario.php">INVENTARIO</a></li>
+        </ul>
+    </nav>
 </head>
+
 <body>
     <!--Grafico de ventas en la ultima semana por sucursal-->
     <h2>Ventas de la última semana</h2>
     <!-- Llamar a una función para generar el pdf -->
-    <button onclick="generatePDF()" >Guardar imagen en PDF</button>
+    <button onclick="generatePDF()">Guardar imagen en PDF</button>
     <div>
         <label for="sucursal">Sucursal:</label>
         <select id="sucursal" onchange="updateSalesChart(this.value)">
-            <option value="todas" <?php if (isset($_GET['sucursal']) && $_GET['sucursal'] === 'todas') echo 'selected'; ?>>Todas las sucursales</option>
-            <option value="1" <?php if (isset($_GET['sucursal']) && $_GET['sucursal'] === '1') echo 'selected'; ?>>SAN PEDRO</option>
-            <option value="2" <?php if (isset($_GET['sucursal']) && $_GET['sucursal'] === '2') echo 'selected'; ?>>ZONA SUR</option>
+            <option value="todas" <?php if (isset($_GET['sucursal']) && $_GET['sucursal'] === 'todas')
+                echo 'selected'; ?>>Todas las sucursales</option>
+            <option value="1" <?php if (isset($_GET['sucursal']) && $_GET['sucursal'] === '1')
+                echo 'selected'; ?>>SAN
+                PEDRO</option>
+            <option value="2" <?php if (isset($_GET['sucursal']) && $_GET['sucursal'] === '2')
+                echo 'selected'; ?>>ZONA
+                SUR</option>
         </select>
     </div>
     <div id="reportPage">
@@ -42,7 +78,7 @@
             <canvas id="salesChart" width="400" height="200"></canvas>
         </div>
     </div>
-    
+
 
     <?php
     // Conexión a la base de datos
@@ -56,19 +92,19 @@
         die("Error de conexión: " . $conn->connect_error);
     }
 
-// Consulta para obtener los datos de ventas semanales
-$sql = "SELECT DATE_FORMAT(fecha_venta, '%Y-%m-%d') AS fecha, SUM(cantidad) AS total
+    // Consulta para obtener los datos de ventas semanales
+    $sql = "SELECT DATE_FORMAT(fecha_venta, '%Y-%m-%d') AS fecha, SUM(cantidad) AS total
 FROM Ventas
 WHERE fecha_venta BETWEEN CURDATE() -  INTERVAL 7 DAY AND CURDATE()";
 
-if (isset($_GET['sucursal']) && $_GET['sucursal'] !== 'todas') {
-    $sucursal = $_GET['sucursal'];
-    $sql .= " AND id_sucursal = '$sucursal'";
-}
+    if (isset($_GET['sucursal']) && $_GET['sucursal'] !== 'todas') {
+        $sucursal = $_GET['sucursal'];
+        $sql .= " AND id_sucursal = '$sucursal'";
+    }
 
-$sql .= " GROUP BY fecha_venta";
+    $sql .= " GROUP BY fecha_venta";
 
-$result = $conn->query($sql);
+    $result = $conn->query($sql);
 
 
     // Crear un array con los datos de ventas semanales
@@ -83,7 +119,7 @@ $result = $conn->query($sql);
     $conn->close();
     ?>
     <script>
-        
+
         // Obtener el contexto del lienzo del gráfico
         var ctx = document.getElementById('salesChart').getContext('2d');
 
@@ -126,7 +162,7 @@ $result = $conn->query($sql);
         }
         // Función para generar el pdf
         function generatePDF() {
-            
+
             // Verificar que se ejecute la función
             console.log('click');
 
@@ -151,8 +187,8 @@ $result = $conn->query($sql);
                 pdf.addImage(imgData, "JPEG", 10, 30, 180, 120);
             }
             // Mostrar el PDF
-            var dataURL=pdf.output('datauristring');
-           //Mostrar el PDF en el navegador
+            var dataURL = pdf.output('datauristring');
+            //Mostrar el PDF en el navegador
             pdf.output('dataurlnewwindow');
         }
     </script>
@@ -164,15 +200,20 @@ $result = $conn->query($sql);
     <div>
         <label for="sucursal2">Sucursal:</label>
         <select id="sucursal2" onchange="updateSalesChart2(this.value)">
-            <option value="todas" <?php if (isset($_GET['sucursal2']) && $_GET['sucursal2'] === 'todas') echo 'selected'; ?>>Todas las sucursales</option>
-            <option value="1" <?php if (isset($_GET['sucursal2']) && $_GET['sucursal2'] === '1') echo 'selected'; ?>>SAN PEDRO</option>
-            <option value="2" <?php if (isset($_GET['sucursal2']) && $_GET['sucursal2'] === '2') echo 'selected'; ?>>ZONA SUR</option>
+            <option value="todas" <?php if (isset($_GET['sucursal2']) && $_GET['sucursal2'] === 'todas')
+                echo 'selected'; ?>>Todas las sucursales</option>
+            <option value="1" <?php if (isset($_GET['sucursal2']) && $_GET['sucursal2'] === '1')
+                echo 'selected'; ?>>SAN
+                PEDRO</option>
+            <option value="2" <?php if (isset($_GET['sucursal2']) && $_GET['sucursal2'] === '2')
+                echo 'selected'; ?>>ZONA
+                SUR</option>
         </select>
     </div>
-    <button onclick="generatePDF2()" >Guardar imagen en PDF</button>
+    <button onclick="generatePDF2()">Guardar imagen en PDF</button>
     <div id="reportPage2">
         <div id="pedidosContainer" style="width: 100%;float: left;">
-        <canvas id="pedidosChart" width="400" height="200"></canvas>
+            <canvas id="pedidosChart" width="400" height="200"></canvas>
         </div>
     </div>
     <?php
@@ -251,7 +292,7 @@ $result = $conn->query($sql);
         }
         // Función para generar el pdf
         function generatePDF2() {
-            
+
             // Verificar que se ejecute la función
             console.log('click');
 
@@ -276,15 +317,15 @@ $result = $conn->query($sql);
                 pdf.addImage(imgData, "JPEG", 10, 30, 180, 120);
             }
             // Mostrar el PDF
-            var dataURL=pdf.output('datauristring');
-           //Mostrar el PDF en el navegador
+            var dataURL = pdf.output('datauristring');
+            //Mostrar el PDF en el navegador
             pdf.output('dataurlnewwindow');
         }
     </script>
-    
+
     <!--Grafico de ventas por sabores de helado-->
     <h2>Ventas por sabores de helado</h2>
-    <button onclick="generatePDF3()" >Guardar imagen en PDF</button>
+    <button onclick="generatePDF3()">Guardar imagen en PDF</button>
     <div id="reportPage3">
         <div class="chart-container">
             <canvas id="ventasBySaborChart" width="400" height="200"></canvas>
@@ -310,7 +351,7 @@ $result = $conn->query($sql);
     ORDER BY total DESC
     LIMIT 5";
 
-$result3 = $conn->query($sql);
+    $result3 = $conn->query($sql);
 
     // Crear un array con los datos de ventas semanales
     $labels3 = [];
@@ -362,7 +403,7 @@ $result3 = $conn->query($sql);
         });
         // Función para generar el pdf
         function generatePDF3() {
-            
+
             // Verificar que se ejecute la función
             console.log('click');
 
@@ -387,8 +428,8 @@ $result3 = $conn->query($sql);
                 pdf.addImage(imgData, "JPEG", 10, 30, 180, 120);
             }
             // Mostrar el PDF
-            var dataURL=pdf.output('datauristring');
-           //Mostrar el PDF en el navegador
+            var dataURL = pdf.output('datauristring');
+            //Mostrar el PDF en el navegador
             pdf.output('dataurlnewwindow');
         }
     </script>
@@ -397,17 +438,17 @@ $result3 = $conn->query($sql);
 
 
 
-<!--Grafico de ventas por sucursal-->
-<h2>Ventas por Sucursal</h2>
+    <!--Grafico de ventas por sucursal-->
+    <h2>Ventas por Sucursal</h2>
 
-    <button onclick="generatePDF4()" >Guardar imagen en PDF</button>
+    <button onclick="generatePDF4()">Guardar imagen en PDF</button>
     <div id="reportPage4">
         <div class="chart-container">
             <canvas id="ventasBySucursalChart" width="400" height="200"></canvas>
         </div>
     </div>
 
-    
+
     <?php
     // Conexión a la base de datos
     $servername = "localhost";
@@ -420,13 +461,13 @@ $result3 = $conn->query($sql);
         die("Error de conexión: " . $conn->connect_error);
     }
 
-   
+
     $sql = "SELECT s.nombre AS sucursal, SUM(v.cantidad) AS total
     FROM Ventas v
     INNER JOIN Sucursales s ON v.id_sucursal = s.id
     GROUP BY v.id_sucursal";
 
-    $result4= $conn->query($sql);
+    $result4 = $conn->query($sql);
 
     // Crear un array con los datos de ventas semanales
     $labels4 = [];
@@ -472,7 +513,7 @@ $result3 = $conn->query($sql);
         });
         // Función para generar el pdf
         function generatePDF4() {
-            
+
             // Verificar que se ejecute la función
             console.log('click');
 
@@ -497,12 +538,12 @@ $result3 = $conn->query($sql);
                 pdf.addImage(imgData, "JPEG", 10, 30, 180, 120);
             }
             // Mostrar el PDF
-            var dataURL=pdf.output('datauristring');
-           //Mostrar el PDF en el navegador
+            var dataURL = pdf.output('datauristring');
+            //Mostrar el PDF en el navegador
             pdf.output('dataurlnewwindow');
         }
     </script>
-    
-</body>
-</html>
 
+</body>
+
+</html>

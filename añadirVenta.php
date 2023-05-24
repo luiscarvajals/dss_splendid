@@ -19,7 +19,7 @@ include 'bdd.php';
 </head>
 
 <body>
-    <nav>
+<nav>
         <a href="index.php"><img src="images/logo.jpeg" alt="logo"></a>
         <ul>
             <li><a href="inicio.php">INICIO</a></li>
@@ -27,7 +27,6 @@ include 'bdd.php';
             <li><a href="personal.php">PERSONAL</a></li>
             <li><a href="dashboard.php">DASHBOARD</a></li>
             <li><a href="inventario.php">INVENTARIO</a></li>
-            <li><a href="#">SALIR</a></li>
         </ul>
     </nav>
 

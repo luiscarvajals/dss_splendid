@@ -16,9 +16,8 @@ $fecha_contratacion = $_POST['fecha_contratacion'];
 
 // INSERT INTO query
 
-$sql = "INSERT INTO empleados (nombre,apellido,fecha_nacimiento,direccion,telefono,email,cargo,sueldo,fecha_contratacion)) 
+$sql = "INSERT INTO empleados (nombre,apellido,fecha_nacimiento,direccion,telefono,email,cargo,sueldo,fecha_contratacion) 
     VALUES ('$nombre','$apellido','$fecha_nacimiento','$direccion','$telefono','$email','$cargo','$sueldo','$fecha_contratacion')";
 
-echo mysqli_query($conexion, $sql);	
-
+echo mysqli_query($conexion, $sql);
 ?>

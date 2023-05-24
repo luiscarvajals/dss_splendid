@@ -88,7 +88,7 @@ $conn->close();
                                     <?php echo $empleado['telefono']; ?><br>
                                     <strong>Email:</strong>
                                     <?php echo $empleado['email']; ?><br>
-                                    <strong>Puesto:</strong>
+                                    <strong>Cargo:</strong>
                                     <?php echo $empleado['cargo']; ?><br>
                                     <strong>Sueldo:</strong>
                                     <?php echo $empleado['sueldo']; ?><br>

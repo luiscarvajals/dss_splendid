@@ -16,15 +16,14 @@ include 'bdd.php';
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav>
-        <a href="inicio.php"><img src="images/logo.jpeg" alt="logo"></a>
+<nav>
+        <a href="index.php"><img src="images/logo.jpeg" alt="logo"></a>
         <ul>
             <li><a href="inicio.php">INICIO</a></li>
             <li><a href="ventas.php">VENTAS</a></li>
             <li><a href="personal.php">PERSONAL</a></li>
             <li><a href="dashboard.php">DASHBOARD</a></li>
             <li><a href="inventario.php">INVENTARIO</a></li>
-            <li><a href="#">SALIR</a></li>
         </ul>
     </nav>
 
